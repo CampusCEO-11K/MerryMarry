@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+$DIVIER_COLOR: #dddddd;
+
+.border-top {
+  border-top: 1px solid $DIVIER_COLOR;
+}
+
+.border-bottom {
+  border-bottom: 1px solid $DIVIER_COLOR;
+}
+
+.ant-page-header {
+  border-bottom: 1px solid $DIVIER_COLOR;
+}
+
+#root {
+  height: 100%;
+}
