@@ -12,6 +12,9 @@ export default function HomePage() {
         <Button block>
           <Link to="/qrcode-display">/qrcode-display</Link>
         </Button>
+        <Button block>
+          <Link to="/qrcode-reader">/qrcode-reader</Link>
+        </Button>
       </Space>
     </div>
   )
