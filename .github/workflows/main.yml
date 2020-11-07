@@ -1,0 +1,37 @@
+name: Main
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  deploy:
+    timeout-minutes: 10
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - uses: actions/setup-node@v1
+    - uses: actions/cache@v1
+      with:
+        path: node_modules
+        key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
+    - run: npm install
+    - run: npm run build
+    - run: tar -czvf build.tar.gz build
+    - uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        source: "build.tar"
+        target: "/home/hyunsub/nginx/"
+    - uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+        port: ${{ secrets.PORT }}
+        script: cd ~/nginx; rm -rf merrymarry; mkdir merrymarry; tar -xzvf build.tar.gz --strip-components=1 -C merrymarry; rm build.tar.gz
