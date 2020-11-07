@@ -1,0 +1,17 @@
+.tab-bar {
+  flex-direction: row;
+  display: flex;
+  height: 48px;
+
+  & > .tab-bar-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 0;
+    border: 1px solid black;
+  }
+
+  & > .tab-bar-item.selected {
+    font-weight: bold;
+  }
+}

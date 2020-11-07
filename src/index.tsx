@@ -1,14 +1,16 @@
+import 'antd/dist/antd.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.scss';
+import { Provider } from 'react-redux';
 import App from './App';
+import './index.scss';
+import { store } from './features';
 import reportWebVitals from './reportWebVitals';
-import 'antd/dist/antd.css';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
