@@ -12,7 +12,7 @@ export default function GuestbookPaymentPage() {
   const [value, setValue] = useState(30000);
   const [loading, setLoading] = useState(false);
 
-  const qrcode = queryString.parse(location.search)['qrcode'];
+  // const qrcode = queryString.parse(location.search)['qrcode'];
   const nextLink = "/";
 
   const onChange = useCallback((v: string | number | undefined) => {
