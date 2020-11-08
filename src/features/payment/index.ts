@@ -3,7 +3,6 @@ import { call, getContext, put, takeEvery } from 'redux-saga/effects';
 import { paymentApprove } from './approve';
 import { paymentPolling } from './polling';
 import { paymentReady } from './ready';
-import { guestbook_success } from 'src/utils/routes';
 
 interface PaymentParams {
   amount: number;
@@ -62,7 +61,7 @@ function* fetch(action: ReturnType<typeof paymentRequest>) {
     const pg_token: paymentPolling.Result = yield call(paymentPolling);
     yield put(slice.actions.update({ status: PaymentStatus.approve }));
 
-    const approveResult: paymentApprove.Result = yield call(paymentApprove, { pg_token, tid });
+    yield call(paymentApprove, { pg_token, tid });
     yield put(slice.actions.update({ status: PaymentStatus.done, loading: false }));
 
     const history = yield getContext('history');

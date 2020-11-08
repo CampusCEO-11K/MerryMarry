@@ -1,7 +1,7 @@
 import { Button, InputNumber, PageHeader, Space, Spin } from 'antd';
 import React, { useCallback, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Redirect, useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { RootActions, RootState } from 'src/features';
 import { guestbook_success } from 'src/utils/routes';
 
