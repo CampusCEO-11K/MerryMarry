@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="kr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>MerryMarry - Payment Success</title>
+</head>
+
+<body>
+  <script>
+    function parseQuery(queryString) {
+      var query = {};
+      var pairs = (queryString[0] === '?' ? queryString.substr(1) : queryString).split('&');
+      for (var i = 0; i < pairs.length; i++) {
+        var pair = pairs[i].split('=');
+        query[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1] || '');
+      }
+      return query;
+    }
+    var queries = parseQuery(location.search);
+    var pg_token = queries.pg_token;
+    var status = queries.status;
+    localStorage.setItem('payment_pg_token', pg_token);
+    localStorage.setItem('payment_status', status);
+    window.close();
+  </script>
+</body>
+
+</html>

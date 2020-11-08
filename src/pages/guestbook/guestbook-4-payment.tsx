@@ -1,18 +1,17 @@
 import { Button, InputNumber, PageHeader, Space, Spin } from 'antd';
-import queryString from 'query-string';
 import React, { useCallback, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { Link, useHistory, useLocation } from 'react-router-dom';
-import { RootActions } from 'src/features';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, Redirect, useHistory } from 'react-router-dom';
+import { RootActions, RootState } from 'src/features';
+import { guestbook_success } from 'src/utils/routes';
 
 export default function GuestbookPaymentPage() {
-  const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
   const [value, setValue] = useState(30000);
-  const [loading, setLoading] = useState(false);
+  const loading = useSelector((state: RootState) => state.payment.loading);
+  const status = useSelector((state: RootState) => state.payment.status);
 
-  // const qrcode = queryString.parse(location.search)['qrcode'];
   const nextLink = "/";
 
   const onChange = useCallback((v: string | number | undefined) => {
@@ -38,12 +37,11 @@ export default function GuestbookPaymentPage() {
   }, []);
 
   const onClick = useCallback(() => {
-    setLoading(true);
-    dispatch(RootActions.payment.ready.request({ amount: value }));
+    dispatch(RootActions.payment.paymentRequest({ amount: value, redirect: guestbook_success }));
   }, [dispatch, value]);
 
   return (
-    <Spin tip="Loading..." size="large" spinning={loading}>
+    <Spin tip={status} size="large" spinning={loading}>
       <PageHeader title="축의금 송금" onBack={history.goBack} />
       <Space direction="vertical" style={{ margin: '8px' }}>
         <p>축의금도 간편하게 전달하시겠어요?</p>

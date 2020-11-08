@@ -1,15 +1,45 @@
+import { applyMiddleware, createStore } from '@reduxjs/toolkit';
 import 'antd/dist/antd.css';
+import { createBrowserHistory } from 'history';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { Router } from 'react-router-dom';
+import logger from 'redux-logger';
+import createSagaMiddleware from 'redux-saga';
 import App from './App';
+import { rootReducer, rootSaga } from './features';
 import './index.scss';
-import { store } from './features';
 import reportWebVitals from './reportWebVitals';
+
+export const customHistory = createBrowserHistory();
+
+// const reduxString: string | null = localStorage.getItem('redux');
+// const persistedState = reduxString ? JSON.parse(reduxString) : undefined;
+
+const sagaMiddleware = createSagaMiddleware({
+  context: {
+    history: customHistory
+  }
+});
+
+export const store = createStore(
+  rootReducer,
+  undefined, // persistedState,
+  applyMiddleware(sagaMiddleware, logger),
+)
+
+sagaMiddleware.run(rootSaga)
+
+// store.subscribe(() => {
+//   localStorage.setItem('redux', JSON.stringify(store.getState()));
+// });
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Router history={customHistory}>
+      <App />
+    </Router>
   </Provider>,
   document.getElementById('root')
 );

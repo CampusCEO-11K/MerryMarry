@@ -1,13 +1,15 @@
-import { InputNumber, PageHeader } from 'antd';
+import { InputNumber, PageHeader, Space, Spin } from 'antd';
 import React, { useCallback, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { RootActions } from 'src/features';
+import { RootActions, RootState } from 'src/features';
 
 export default function PaymentTestPage() {
   const history = useHistory();
   const dispatch = useDispatch();
   const [value, setValue] = useState(30000);
+  const loading = useSelector((state: RootState) => state.payment.loading);
+  const status = useSelector((state: RootState) => state.payment.status);
 
   const onChange = useCallback((v: string | number | undefined) => {
     if (typeof v === 'string') {
@@ -32,26 +34,28 @@ export default function PaymentTestPage() {
   }, []);
 
   const onClick = useCallback(() => {
-    dispatch(RootActions.payment.ready.request({ amount: value }))
+    dispatch(RootActions.payment.paymentRequest({ amount: value, redirect: '/payment/test/success' }));
   }, [dispatch, value]);
 
   return (
-    <>
+    <Spin tip={status} size="large" spinning={loading}>
       <PageHeader title="카카오페이 테스트" onBack={history.goBack} />
-      <InputNumber
-        style={{ width: '100%', marginTop: '16px' }}
-        defaultValue={value}
-        formatter={formatter}
-        parser={parser}
-        onChange={onChange}
-      />
-      <div
-        className="flex-center"
-        style={{ backgroundColor: '#ffe812', height: '100px', marginTop: '16px' }}
-        onClick={onClick}
-      >
-        카카오페이 결제 테스트
+      <Space direction="vertical" style={{ margin: '8px' }}>
+        <InputNumber
+          style={{ width: '100%' }}
+          defaultValue={value}
+          formatter={formatter}
+          parser={parser}
+          onChange={onChange}
+        />
+        <div
+          className="flex-center"
+          style={{ backgroundColor: '#ffe812', height: '100px' }}
+          onClick={onClick}
+        >
+          카카오페이 결제 테스트
       </div>
-    </>
+      </Space>
+    </Spin>
   )
 }

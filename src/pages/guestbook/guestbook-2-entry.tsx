@@ -1,4 +1,4 @@
-import { Button, PageHeader } from 'antd';
+import { Button, PageHeader, Space } from 'antd';
 import queryString from 'query-string';
 import React from 'react';
 import { Link, useHistory, useLocation } from 'react-router-dom';
@@ -14,12 +14,13 @@ export default function GuestbookEntryPage() {
   return (
     <>
       <PageHeader title="방명록" onBack={history.goBack} />
-      ㅇㅇㅇ님의 결혼식에 참석하셨네요! 방명록을 남기고 축의금을 간편하게 전달해보세요!
-      <br />
-      <p>qrcode: {qrcode}</p>
-      <Button type="primary">
-        <Link to={nextLink}>다음</Link>
-      </Button>
+      <Space direction="vertical" style={{ margin: '8px' }}>
+        <p>ㅇㅇㅇ님의 결혼식에 참석하셨네요! 방명록을 남기고 축의금을 간편하게 전달해보세요!</p>
+        <p>qrcode: {qrcode}</p>
+        <Button type="primary">
+          <Link to={nextLink}>다음</Link>
+        </Button>
+      </Space>
     </>
   )
 }
