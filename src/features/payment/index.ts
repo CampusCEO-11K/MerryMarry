@@ -53,9 +53,16 @@ function* fetch(action: ReturnType<typeof paymentRequest>) {
     const readyResult: paymentReady.Result = yield call(paymentReady, { amount: action.payload.amount });
     yield put(slice.actions.update({ status: PaymentStatus.polling }));
     
-    // window.location.assign(result.next_redirect_mobile_url);
-    const win = window.open(readyResult.next_redirect_mobile_url, '_blank');
-    win?.focus();
+    const isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i);
+    if (isMobile) {
+      // window.location.assign(result.next_redirect_mobile_url);
+      const win = window.open(readyResult.next_redirect_mobile_url, '_blank');
+      win?.focus();
+    } else {
+      // window.location.assign(result.next_redirect_pc_url);
+      const win = window.open(readyResult.next_redirect_pc_url, '_blank');
+      win?.focus();
+    }
 
     const tid = readyResult.tid;
     const pg_token: paymentPolling.Result = yield call(paymentPolling);

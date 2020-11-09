@@ -25,7 +25,6 @@ export default function GuestbookTabPage() {
         <Button disabled>
           <Link to="/">축하 메시지</Link>
         </Button>
-        <p>결혼 축하 메시지 작성 및 수정</p>
       </Space>
     </TabBarLayout>
   )
