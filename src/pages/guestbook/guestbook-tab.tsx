@@ -2,7 +2,7 @@ import { Button, Space } from 'antd';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { guestbook_qrcode } from 'src/utils/routes';
-import TabBarLayout from '../tab-bar-layout';
+import TabBarLayout from '../layouts/tab-bar-layout';
 
 export default function GuestbookTabPage() {
   return (

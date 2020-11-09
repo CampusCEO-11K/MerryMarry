@@ -22,9 +22,7 @@ export default function TabBarLayout(props: Props) {
   return (
     <>
       <PageHeader title={Tab[currentTab].kr} extra={headerExtra} />
-      <div
-        className="content-layout"
-      >
+      <div className="content-layout">
         {props.children}
       </div>
       <TabBar current={currentTab} />

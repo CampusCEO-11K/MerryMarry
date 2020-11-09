@@ -1,7 +1,6 @@
 import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import * as routes from 'src/utils/routes';
-import { PhoneBottomSVG, PhoneSVG, PhoneTopSVG } from './components';
 import { useWindowSize } from './hooks';
 import * as pages from './pages';
 
@@ -34,22 +33,9 @@ function App() {
 
   if (width > 600) {
     return (
-      <div id="phone-layout">
-        <div id="phone-svg-container">
-          <PhoneSVG />
-        </div>
-        <div id="phone-inside-layout">
-          <div id="phone-top-svg-container">
-            <PhoneTopSVG />
-          </div>
-          <div id="phone-content-container">
-            {content}
-          </div>
-          <div id="phone-bottom-svg-container">
-            <PhoneBottomSVG />
-          </div>
-        </div>
-      </div>
+      <pages.PhoneLayout>
+        {content}
+      </pages.PhoneLayout>
     );
   } else {
     return content;

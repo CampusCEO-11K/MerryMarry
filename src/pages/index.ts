@@ -1,5 +1,6 @@
 export { default as QrcodeDisplayPage } from './qrcode-display';
-export { default as TabBarLayout } from './tab-bar-layout';
+export { default as TabBarLayout } from './layouts/tab-bar-layout';
+export { default as PhoneLayout } from './layouts/phone-layout';
 
 export { default as GuestbookTabPage } from './guestbook/guestbook-tab';
 export { default as GuestbookQrcodePage } from './guestbook/guestbook-1-qrcode';

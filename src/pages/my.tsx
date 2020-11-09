@@ -1,5 +1,5 @@
 import React from 'react';
-import TabBarLayout from './tab-bar-layout';
+import TabBarLayout from './layouts/tab-bar-layout';
 
 export default function MyPage() {
   return (
