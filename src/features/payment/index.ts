@@ -1,13 +1,8 @@
 import { createAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { call, getContext, put, takeEvery } from 'redux-saga/effects';
-import { paymentApprove } from './approve';
+import { call, put, takeEvery } from 'redux-saga/effects';
+import { paymentApprove } from '../../api/payment/approve';
+import { paymentReady } from '../../api/payment/ready';
 import { paymentPolling } from './polling';
-import { paymentReady } from './ready';
-
-interface PaymentParams {
-  amount: number;
-  redirect: string;
-}
 
 const PaymentStatus = {
   ready: '준비 중...',
@@ -26,7 +21,8 @@ const initialState: State = {
   loading: false,
 }
 
-const paymentRequest = createAction<PaymentParams>('payment/request');
+const paymentRequest = createAction<paymentReady.Params>('payment/request');
+const paymentSuccess = createAction<paymentApprove.Result>('payment/success');
 
 // Slices
 const slice = createSlice({
@@ -43,6 +39,7 @@ export const reducer = slice.reducer;
 
 export const actions = {
   paymentRequest,
+  paymentSuccess
 }
 
 // Sagas
@@ -68,11 +65,10 @@ function* fetch(action: ReturnType<typeof paymentRequest>) {
     const pg_token: paymentPolling.Result = yield call(paymentPolling);
     yield put(slice.actions.update({ status: PaymentStatus.approve }));
 
-    yield call(paymentApprove, { pg_token, tid });
+    const approveResult: paymentApprove.Result = yield call(paymentApprove, { pg_token, tid });
     yield put(slice.actions.update({ status: PaymentStatus.done, loading: false }));
 
-    const history = yield getContext('history');
-    history.push(action.payload.redirect);
+    yield put(paymentSuccess(approveResult));
   } catch (error) {
     yield put(slice.actions.update({ error, loading: false }));
   }

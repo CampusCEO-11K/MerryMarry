@@ -34,7 +34,7 @@ export default function PaymentTestPage() {
   }, []);
 
   const onClick = useCallback(() => {
-    dispatch(RootActions.payment.paymentRequest({ amount: value, redirect: '/payment/test/success' }));
+    dispatch(RootActions.payment.paymentRequest({ amount: value }));
   }, [dispatch, value]);
 
   return (

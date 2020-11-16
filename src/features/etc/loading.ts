@@ -1,20 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface State {
-  qrcode: string;
-}
+type State = boolean
 
-const initialState: State = {
-  qrcode: '',
-}
+const initialState: State = false;
 
 // Slices
 const slice = createSlice({
-  name: 'qrcode',
+  name: 'loading',
   initialState,
   reducers: {
-    set: (state, { payload }: PayloadAction<string>) => ({ qrcode: payload }),
-    clear: () => initialState,
+    set: (_, { payload }: PayloadAction<State>) => (payload),
   },
 });
 

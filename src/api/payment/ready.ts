@@ -1,21 +1,11 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios';
 import { API_SERVER } from 'src/envs';
+import request from '../request';
 
 export function paymentReady(params: paymentReady.Params): Promise<paymentReady.Result> {
-  return new Promise((resolve, reject) => {
-    const config: AxiosRequestConfig = {
-      url: `${API_SERVER}/payment/ready`,
-      method: 'post',
-      data: params,
-    }
-
-    axios(config)
-      .then((response: AxiosResponse) => {
-        resolve(response.data);
-      })
-      .catch((err: string) => {
-        reject(err);
-      })
+  return request({
+    url: `${API_SERVER}/payment/ready`,
+    method: 'post',
+    data: params,
   })
 }
 
@@ -23,7 +13,7 @@ export declare namespace paymentReady {
   export type Params = {
     amount: number;
   }
-  
+
   export type Result = {
     tid: string;
     next_redirect_app_url: string;
