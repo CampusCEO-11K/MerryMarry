@@ -16,3 +16,10 @@ export interface Guestbook {
   belong: string;
   msg: string;
 }
+
+export interface Ticket {
+  ticketId: number;
+  userId: number;
+  marriageId: number;
+  isUsed: boolean;
+}

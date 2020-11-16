@@ -18,9 +18,11 @@ function* fetch({ payload }: ReturnType<typeof guestbookWorkflowInit>) {
 
   if (payload.marriageId) {
     const marriage: getMarriageApi.Result = yield call(getMarriageApi, { marriageId: payload.marriageId });
+    yield put(slice.actions.clear());
     yield put(slice.actions.update({ marriage, isOnline }));
   } else if (payload.personId) {
     const person: getPersonApi.Result = yield call(getPersonApi, { personId: payload.personId });
+    yield put(slice.actions.clear());
     yield put(slice.actions.update({ person, isOnline }));
   }
 }

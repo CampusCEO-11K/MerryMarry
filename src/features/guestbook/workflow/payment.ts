@@ -20,9 +20,7 @@ function* fetch(action: ReturnType<typeof guestbookWorkflowPayment>) {
 
   if (amount) {
     yield put(paymentRequest({ amount }));
-    console.log('asdf==================================');
     yield take(paymentSuccess.type);
-    console.log('fdsa==================================');
   }
 
   const userId2 = yield select((state: RootState) => state.auth.userId);
