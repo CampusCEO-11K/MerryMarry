@@ -1,7 +1,8 @@
-import { Button, PageHeader, Spin } from 'antd';
+import { PageHeader } from 'antd';
 import React, { useCallback, useState } from 'react';
 import QrReader from 'react-qr-reader';
 import { useHistory } from 'react-router-dom';
+import { guestbook_workflow } from 'src/utils/routes';
 
 export default function GuestbookQrcodePage() {
   const history = useHistory();
@@ -9,28 +10,23 @@ export default function GuestbookQrcodePage() {
 
   const onScan = useCallback((data: string | null) => {
     if (data) {
-      // const path = data.replace(/https?:\/\/[^/]+/g, '');
-      // const regexp = new RegExp(marriage_guestbook_func('\\d+'));
-      // if (path.match(regexp)) {
-      //   history.push(path);
-      // } else {
-      //   setValue('잘못된 형식의 QR코드입니다');
-      // }
+      const path = data.replace(/https?:\/\/[^/]+/g, '');
+      history.push(path);
     } else {
       setValue('QR코드를 읽는데 실패했습니다');
     }
-  }, []);
+  }, [history]);
 
   const onError = useCallback((err: any) => {
     setValue(err.toString());
   }, []);
 
   const onSkip = useCallback(() => {
-    // history.push(marriage_guestbook_func('160000000'));
-  }, [])
+    history.push(guestbook_workflow({ marriageId: 1, isOnline: false }));
+  }, [history])
 
   return (
-    <Spin style={{ height: '100%' }} spinning={false}>
+    <>
       <PageHeader title="QR코드 인식" onBack={history.goBack} />
       <QrReader
         delay={300}
@@ -39,7 +35,7 @@ export default function GuestbookQrcodePage() {
         style={{ width: '100%' }}
       />
       <p>{value}</p>
-      <Button onClick={onSkip}>Skip</Button>
-    </Spin>
+      <button type="button" className="btn btn-primary" onClick={onSkip}>Skip</button>
+    </>
   )
 }

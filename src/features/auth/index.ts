@@ -11,9 +11,9 @@ const initialState: State = {
   userId: undefined,
 }
 
-const authLoginRequest = createAction<authLoginApi.Params>('auth/login/request');
-const authLoginSuccess = createAction<authLoginApi.Result>('auth/login/success');
-const authLoginFailure = createAction<string>('auth/login/failure');
+export const authLoginRequest = createAction<authLoginApi.Params>('auth/login/request');
+export const authLoginSuccess = createAction<authLoginApi.Result>('auth/login/success');
+export const authLoginFailure = createAction<string>('auth/login/failure');
 
 // Slices
 const slice = createSlice({

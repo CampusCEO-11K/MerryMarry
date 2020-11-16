@@ -21,8 +21,8 @@ const initialState: State = {
   loading: false,
 }
 
-const paymentRequest = createAction<paymentReady.Params>('payment/request');
-const paymentSuccess = createAction<paymentApprove.Result>('payment/success');
+export const paymentRequest = createAction<paymentReady.Params>('payment/request');
+export const paymentSuccess = createAction<paymentApprove.Result>('payment/success');
 
 // Slices
 const slice = createSlice({

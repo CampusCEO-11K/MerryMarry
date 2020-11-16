@@ -1,4 +1,4 @@
-import { Button, PageHeader } from 'antd';
+import { PageHeader } from 'antd';
 import React, { useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 import { TabBar } from 'src/components';
@@ -14,14 +14,12 @@ export default function TabBarLayout(props: Props) {
 
   const currentTab: TabBar.Tab = useMemo(() => {
     return Object.values(Tab)
-      .find((v) => v.route === pathname)!.en
+      .find((v) => pathname.startsWith(v.route))!.en
   }, [pathname]);
-
-  const headerExtra = <Button disabled>축의금 충전하기</Button>;
 
   return (
     <>
-      <PageHeader title={Tab[currentTab].kr} extra={headerExtra} />
+      <PageHeader title={Tab[currentTab].kr} />
       <div className="content-layout">
         {props.children}
       </div>

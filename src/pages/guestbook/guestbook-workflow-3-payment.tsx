@@ -1,26 +1,29 @@
 import { PageHeader, Space } from 'antd';
 import React, { useCallback, useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { RootActions } from 'src/features';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from 'src/features';
+import { guestbookWorkflowBack } from 'src/features/guestbook/workflow/go-back';
+import { guestbookWorkflowPayment } from 'src/features/guestbook/workflow/payment';
 
-export default function GuestbookPaymentPage() {
+export default function GuestbookWorkflowPaymentPage() {
   const dispatch = useDispatch();
-  const [value, setValue] = useState(30000);
+  const amount = useSelector((state: RootState) => state.guestbook.workflow.amount);
+  const [value, setValue] = useState(amount || 30000);
 
   const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(parseInt(e.target.value));
+    setValue(parseInt(e.target.value || '0'));
   }, []);
 
   const onPayment = useCallback(() => {
-    dispatch(RootActions.marriage.marriagePayment(value));
+    dispatch(guestbookWorkflowPayment(value));
   }, [dispatch, value]);
 
   const onSkip = useCallback(() => {
-    dispatch(RootActions.marriage.marriagePayment(undefined));
+    dispatch(guestbookWorkflowPayment());
   }, [dispatch]);
 
   const onBack = useCallback(() => {
-    dispatch(RootActions.marriage.marriageStepback())
+    dispatch(guestbookWorkflowBack())
   }, [dispatch]);
 
   return (
@@ -32,6 +35,7 @@ export default function GuestbookPaymentPage() {
           className="form-control"
           placeholder="금액을 입력해주세요"
           type="number"
+          value={value}
           onChange={onChange}
         />
         <button type="button" className="btn btn-primary" onClick={onPayment}>

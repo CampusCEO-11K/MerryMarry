@@ -2,8 +2,10 @@ import { PageHeader, Space } from 'antd';
 import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { RootActions } from 'src/features';
+import { guestbookWorkflowLoginSkip } from 'src/features/guestbook/workflow/payment';
+import { guestbookWorkflowBack } from 'src/features/guestbook/workflow/go-back';
 
-export default function LoginPage() {
+export default function GuestbookWorkflowLoginPage() {
   const dispatch = useDispatch();
   const [state, setState] = useState({
     username: '',
@@ -15,7 +17,7 @@ export default function LoginPage() {
   }, [dispatch, state]);
 
   const onSkip = useCallback(() => {
-    dispatch(RootActions.marriage.marriageLoginSkip(undefined));
+    dispatch(guestbookWorkflowLoginSkip());
   }, [dispatch]);
 
   const onChange = useCallback((e) => {
@@ -27,7 +29,7 @@ export default function LoginPage() {
   }, []);
 
   const onBack = useCallback(() => {
-    dispatch(RootActions.marriage.marriageStepback())
+    dispatch(guestbookWorkflowBack())
   }, [dispatch]);
 
   return (

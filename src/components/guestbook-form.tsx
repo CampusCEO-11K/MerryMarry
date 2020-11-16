@@ -4,10 +4,11 @@ import { Guestbook } from 'src/models';
 interface Props {
   onSkip: () => void;
   onSubmit: (guestbook: Guestbook) => void;
+  defaultValue?: Guestbook;
 }
 
 export default function GuestbookForm(props: Props) {
-  const [guestbook, setGuestbook] = useState({
+  const [guestbook, setGuestbook] = useState(props.defaultValue || {
     name: '',
     belong: '',
     msg: '',

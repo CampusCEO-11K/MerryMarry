@@ -2,13 +2,12 @@ import { PageHeader, Space } from 'antd';
 import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { RootActions } from 'src/features';
+import { guestbookPhone } from 'src/features/guestbook/phone';
 
 export default function GuestbookPhonePage() {
   const history = useHistory();
   const dispatch = useDispatch();
   const [state, setState] = useState({
-    name: '',
     phone: '',
   });
 
@@ -21,7 +20,7 @@ export default function GuestbookPhonePage() {
   }, []);
 
   const onNext = useCallback(() => {
-    dispatch(RootActions.marriage.marragePhoneAction(state));
+    dispatch(guestbookPhone(state));
   }, [dispatch, state]);
 
   return (
@@ -30,12 +29,8 @@ export default function GuestbookPhonePage() {
       <Space direction="vertical" style={{ margin: '8px' }}>
         <form>
           <div className="form-group">
-            <label>예비신랑/신부의 성함</label>
-            <input type="text" className="form-control" name="name" onChange={onChange} />
-          </div>
-          <div className="form-group">
             <label>예비신랑/신부의 전화번호</label>
-            <input type="text" className="form-control" name="phone" onChange={onChange} />
+            <input type="number" className="form-control" name="phone" onChange={onChange} />
           </div>
         </form>
         <button type="button" className="btn btn-primary" onClick={onNext}>다음</button>

@@ -1,18 +1,14 @@
 import { PageHeader, Space } from 'antd';
 import React, { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { MarriageCard } from 'src/components';
-import { RootActions } from 'src/features';
-import { Marriage, Person } from 'src/models';
+import { RootState } from 'src/features';
+import { guestbookWorkflowEntry } from 'src/features/guestbook/workflow/entry';
 
-interface Props {
-  marriage?: Marriage;
-  person?: Person;
-  isOnline: boolean;
-}
-
-export default function GuestbookEntryPage({ marriage, person, isOnline }: Props) {
+export default function GuestbookWorkflowEntryPage() {
   const dispatch = useDispatch();
+  const state = useSelector((state: RootState) => state.guestbook.workflow);
+  const { marriage, person, isOnline } = state;
   
   let msg = <div />;
   if (marriage) {
@@ -26,7 +22,7 @@ export default function GuestbookEntryPage({ marriage, person, isOnline }: Props
   }
 
   const onClick = useCallback(() => {
-    dispatch(RootActions.marriage.marriageEntry());
+    dispatch(guestbookWorkflowEntry());
   }, [dispatch]);
 
   return (
