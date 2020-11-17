@@ -1,4 +1,5 @@
 import { API_SERVER } from 'src/envs';
+import { GuestbookForUser } from 'src/models';
 import request from '../request';
 
 export function createGuestbookApi(params: createGuestbookApi.Params): Promise<createGuestbookApi.Result> {
@@ -12,17 +13,13 @@ export function createGuestbookApi(params: createGuestbookApi.Params): Promise<c
 export declare namespace createGuestbookApi {
   type Params = {
     marriageId: number;
-    userId?: number;
+    userId: number;
+    transactionId?: number;
     name: string;
-    belong: string;
-    msg: string;
+    belong?: string;
+    msg?: string;
+    isOnline: boolean;
   };
 
-  type Result = {
-    guestbookId: number;
-    marriageId: number;
-    name: string;
-    belong: string;
-    msg: string;
-  };
+  type Result = GuestbookForUser;
 }

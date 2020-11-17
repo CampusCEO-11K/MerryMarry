@@ -2,13 +2,12 @@ import { PageHeader, Space } from 'antd';
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { MarriageCard } from 'src/components';
-import { RootState } from 'src/features';
-import { guestbookWorkflowEntry } from 'src/features/guestbook/workflow/entry';
+import { RootActions, RootState } from 'src/features';
 
 export default function GuestbookWorkflowEntryPage() {
   const dispatch = useDispatch();
   const state = useSelector((state: RootState) => state.guestbook.workflow);
-  const { marriage, person, isOnline } = state;
+  const { marriage, isOnline } = state;
   
   let msg = <div />;
   if (marriage) {
@@ -17,12 +16,10 @@ export default function GuestbookWorkflowEntryPage() {
     } else {
       msg = <p>{marriage.male.name}❤️ {marriage.lady.name}의 결혼식에 참석하셨네요! 방명록을 남기고 축의금을 간편하게 전달해보세요!</p>
     }
-  } else if (person) {
-    msg = <p>{person.name}님의 결혼식에 참석하지는 못했지만, 축하하는 마음으로 방명록을 남기고 축의금을 간편하게 전달해보세요!</p>
   }
 
   const onClick = useCallback(() => {
-    dispatch(guestbookWorkflowEntry());
+    dispatch(RootActions.guestbook.workflow.entry());
   }, [dispatch]);
 
   return (

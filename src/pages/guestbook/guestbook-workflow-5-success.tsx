@@ -7,14 +7,12 @@ import { ticket } from 'src/utils/routes';
 
 export default function GuestbookSuccessPage() {
   const state = useSelector((state: RootState) => state.guestbook.workflow);
-  const { marriage, person } = state;
+  const { marriage } = state;
 
   let msg = <div />;
   if (marriage) {
     msg = <p>{marriage.male.name}❤️ {marriage.lady.name}에게 축하와 함께 축의금이 전달되었습니다!</p>
-  } else if (person) {
-    msg = <p>{person.name}에게 축하와 함께 축의금이 전달되었습니다!</p>
-  };
+  }
 
   return (
     <>

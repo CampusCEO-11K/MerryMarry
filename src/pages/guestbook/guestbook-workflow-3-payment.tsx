@@ -1,29 +1,25 @@
 import { PageHeader, Space } from 'antd';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'src/features';
-import { guestbookWorkflowBack } from 'src/features/guestbook/workflow/go-back';
+import { RootActions, RootState } from 'src/features';
 import { guestbookWorkflowPayment } from 'src/features/guestbook/workflow/payment';
 
 export default function GuestbookWorkflowPaymentPage() {
   const dispatch = useDispatch();
   const amount = useSelector((state: RootState) => state.guestbook.workflow.amount);
-  const [value, setValue] = useState(amount || 30000);
-
-  const onChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(parseInt(e.target.value || '0'));
-  }, []);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const onPayment = useCallback(() => {
+    const value = parseInt(inputRef.current!.value);
     dispatch(guestbookWorkflowPayment(value));
-  }, [dispatch, value]);
+  }, [dispatch, inputRef]);
 
   const onSkip = useCallback(() => {
     dispatch(guestbookWorkflowPayment());
   }, [dispatch]);
 
   const onBack = useCallback(() => {
-    dispatch(guestbookWorkflowBack())
+    dispatch(RootActions.guestbook.workflow.back())
   }, [dispatch]);
 
   return (
@@ -32,11 +28,11 @@ export default function GuestbookWorkflowPaymentPage() {
       <Space direction="vertical" style={{ margin: '8px' }}>
         <p>축의금도 간편하게 전달하시겠어요?</p>
         <input
+          ref={inputRef}
           className="form-control"
           placeholder="금액을 입력해주세요"
           type="number"
-          value={value}
-          onChange={onChange}
+          defaultValue={amount?.toString()}
         />
         <button type="button" className="btn btn-primary" onClick={onPayment}>
           카카오 페이 결제

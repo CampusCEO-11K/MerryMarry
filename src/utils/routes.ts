@@ -7,9 +7,8 @@ export const my = "/my";
 
 // guestbook
 export interface GuestbookWorkflowQuery {
-  marriageId?: number;
-  personId?: number;
-  isOnline?: boolean;
+  marriageId: number;
+  isOnline: boolean;
 }
 export const guestbook_workflow = (query?: GuestbookWorkflowQuery) => {
   const querystring = query

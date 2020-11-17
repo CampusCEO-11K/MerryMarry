@@ -1,25 +1,38 @@
-export interface Person {
-  personId: number;
-  name: string;
-  phone: string;
+export interface User {
+  userId: number;
+  username?: string;
+  name?: string;
+  phone?: string;
+  addDate: string;
+  regDate?: string;
 }
 
 export interface Marriage {
   marriageId: number;
-  male: Person;
-  lady: Person;
+  male: User;
+  lady: User;
   location: string;
+  account: string;
+  bank: string;
 }
 
-export interface Guestbook {
-  name: string;
-  belong: string;
-  msg: string;
+export interface Transaction {
+  transactionId: number;
+  amount: number;
+  date: string;
 }
 
 export interface Ticket {
   ticketId: number;
-  userId: number;
-  marriageId: number;
+  marriage: Marriage;
   isUsed: boolean;
+}
+
+export interface GuestbookForUser {
+  guestbookId: number;
+  marriage: Marriage;
+  transaction?: Transaction;
+  belong?: string;
+  msg?: string;
+  isOnline: boolean;
 }

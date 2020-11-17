@@ -14,8 +14,8 @@ import reportWebVitals from './reportWebVitals';
 
 export const customHistory = createBrowserHistory();
 
-// const reduxString: string | null = localStorage.getItem('redux');
-// const persistedState = reduxString ? JSON.parse(reduxString) : undefined;
+const reduxString: string | null = localStorage.getItem('auth');
+const persistedState = reduxString ? JSON.parse(reduxString) : undefined;
 
 const sagaMiddleware = createSagaMiddleware({
   context: {
@@ -25,15 +25,15 @@ const sagaMiddleware = createSagaMiddleware({
 
 export const store = createStore(
   rootReducer,
-  undefined, // persistedState,
+  { auth: persistedState },
   applyMiddleware(sagaMiddleware, logger),
 )
 
 sagaMiddleware.run(rootSaga)
 
-// store.subscribe(() => {
-//   localStorage.setItem('redux', JSON.stringify(store.getState()));
-// });
+store.subscribe(() => {
+  localStorage.setItem('auth', JSON.stringify(store.getState().auth));
+});
 
 ReactDOM.render(
   <Provider store={store}>

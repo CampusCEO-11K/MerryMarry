@@ -1,4 +1,5 @@
 import { API_SERVER } from 'src/envs';
+import { User } from 'src/models';
 import request from '../request';
 
 export async function authLoginApi(params: authLoginApi.Params): Promise<authLoginApi.Result> {
@@ -15,7 +16,5 @@ export declare namespace authLoginApi {
     password: string;
   };
   
-  type Result = {
-    userId: number;
-  };
+  type Result = User;
 }

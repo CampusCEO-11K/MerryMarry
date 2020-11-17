@@ -47,7 +47,7 @@ function* fetch(action: ReturnType<typeof paymentRequest>) {
   try {
     yield put(slice.actions.update({ status: PaymentStatus.ready, loading: true }));
 
-    const readyResult: paymentReady.Result = yield call(paymentReady, { amount: action.payload.amount });
+    const readyResult: paymentReady.Result = yield call(paymentReady, action.payload);
     yield put(slice.actions.update({ status: PaymentStatus.polling }));
     
     const isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i);
@@ -62,10 +62,10 @@ function* fetch(action: ReturnType<typeof paymentRequest>) {
     }
 
     const tid = readyResult.tid;
-    const pg_token: paymentPolling.Result = yield call(paymentPolling);
+    const pgToken: paymentPolling.Result = yield call(paymentPolling);
     yield put(slice.actions.update({ status: PaymentStatus.approve }));
 
-    const approveResult: paymentApprove.Result = yield call(paymentApprove, { pg_token, tid });
+    const approveResult: paymentApprove.Result = yield call(paymentApprove, { pgToken, tid });
     yield put(slice.actions.update({ status: PaymentStatus.done, loading: false }));
 
     yield put(paymentSuccess(approveResult));

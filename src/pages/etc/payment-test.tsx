@@ -34,7 +34,7 @@ export default function PaymentTestPage() {
   }, []);
 
   const onClick = useCallback(() => {
-    dispatch(RootActions.payment.paymentRequest({ amount: value }));
+    dispatch(RootActions.payment.paymentRequest({ amount: value, itemName: '카카오페이 테스트' }));
   }, [dispatch, value]);
 
   return (

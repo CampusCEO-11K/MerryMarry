@@ -12,6 +12,7 @@ export function paymentReady(params: paymentReady.Params): Promise<paymentReady.
 export declare namespace paymentReady {
   export type Params = {
     amount: number;
+    itemName: string;
   }
 
   export type Result = {

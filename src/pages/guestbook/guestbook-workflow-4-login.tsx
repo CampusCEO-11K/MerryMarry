@@ -3,7 +3,6 @@ import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { RootActions } from 'src/features';
 import { guestbookWorkflowLoginSkip } from 'src/features/guestbook/workflow/payment';
-import { guestbookWorkflowBack } from 'src/features/guestbook/workflow/go-back';
 
 export default function GuestbookWorkflowLoginPage() {
   const dispatch = useDispatch();
@@ -29,7 +28,7 @@ export default function GuestbookWorkflowLoginPage() {
   }, []);
 
   const onBack = useCallback(() => {
-    dispatch(guestbookWorkflowBack())
+    dispatch(RootActions.guestbook.workflow.back())
   }, [dispatch]);
 
   return (

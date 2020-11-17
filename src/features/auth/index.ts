@@ -2,13 +2,14 @@ import { createAction, createSlice } from '@reduxjs/toolkit';
 import { message } from 'antd';
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { authLoginApi } from 'src/api';
+import { User } from 'src/models';
 
 interface State {
-  userId?: number;
+  user?: User;
 }
 
 const initialState: State = {
-  userId: undefined,
+  user: undefined,
 }
 
 export const authLoginRequest = createAction<authLoginApi.Params>('auth/login/request');
@@ -22,7 +23,7 @@ const slice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(authLoginSuccess, (state, action) => {
-      return { ...state, userId: action.payload.userId};
+      return { ...state, user: action.payload };
     });
   },
 });

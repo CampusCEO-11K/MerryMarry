@@ -1,4 +1,5 @@
 import { API_SERVER } from 'src/envs';
+import { User } from 'src/models';
 import request from '../request';
 
 export function authRegisterApi(params: authRegisterApi.Params): Promise<authRegisterApi.Result> {
@@ -11,13 +12,12 @@ export function authRegisterApi(params: authRegisterApi.Params): Promise<authReg
 
 export declare namespace authRegisterApi {
   type Params = {
+    userId: number;
     username: string;
     password: string;
     phone: string;
     name: string;
   };
   
-  type Result = {
-    userId: number;
-  };
+  type Result = User;
 }

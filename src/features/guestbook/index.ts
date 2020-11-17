@@ -7,7 +7,7 @@ export const reducer = combineReducers({
 });
 
 export const actions = {
-  ...workflow.slice.actions,
+  workflow: workflow.slice.actions,
 }
 
 export const sagas = [
