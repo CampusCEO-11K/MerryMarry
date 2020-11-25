@@ -6,7 +6,7 @@ import './tab-bar.scss';
 
 export const Tab = {
   guestbook: { en: 'guestbook', kr: '방명록', route: routes.guestbook },
-  ticket: { en: 'ticket', kr: '식권', route: routes.ticket },
+  ticket: { en: 'ticket', kr: '모바일 식권', route: routes.ticket },
   data: { en: 'data', kr: '데이터 관리', route: routes.data },
   community: { en: 'community', kr: '커뮤니티', route: routes.community },
   my: { en: 'my', kr: 'MY', route: routes.my },

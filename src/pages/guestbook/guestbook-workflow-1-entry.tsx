@@ -2,20 +2,8 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TopBar } from 'src/components';
 import { RootActions, RootState } from 'src/features';
-import { Marriage } from 'src/models';
+import { getNameFromMarriage } from 'src/utils';
 import './guestbook-workflow-1-entry.scss';
-
-function parseName(marriage: Marriage) {
-  if (marriage.male.name && marriage.lady.name) {
-    return `${marriage.male.name} ❤️ ${marriage.lady.name}`;
-  } else if (marriage.male.name) {
-    return marriage.male.name;
-  } else if (marriage.lady.name) {
-    return marriage.lady.name;
-  } else {
-    return 'OOO';
-  }
-}
 
 export default function GuestbookWorkflowEntryPage() {
   const dispatch = useDispatch();
@@ -24,7 +12,7 @@ export default function GuestbookWorkflowEntryPage() {
 
   let msg = <div />;
   if (marriage) {
-    const name = parseName(marriage);
+    const name = getNameFromMarriage(marriage);
 
     if (isOnline) {
       msg = <p>{name}의 결혼식에 참석하지는 못했지만,<br />축하하는 마음으로 방명록을 남기고<br />축의금을 간편하게 전달해보세요!</p>

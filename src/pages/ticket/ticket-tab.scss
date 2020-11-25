@@ -1,0 +1,86 @@
+.ticket-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  height: 100%;
+
+  & > .main-ticket-container {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    & > .main-ticket {
+      width: 247px;
+      height: 406px;
+      background-color: white;
+      box-shadow: 0 5px 8px rgba(0, 0, 0, 0.25);
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+
+      & > .ticket-id {
+        margin-left: 20px;
+        margin-top: 20px;
+        font-size: 18px;
+      }
+
+      & > .marriage-name {
+        width: 166px;
+        height: 47px;
+        margin-top: 40px;
+        line-height: 47px;
+        align-self: center;
+        text-align: center;
+        background: rgba(203, 181, 230, 0.86);
+        border-radius: 20px;
+        font-size: 18px;
+      }
+
+      & > .description {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 15px;
+        line-height: 30px;
+      }
+
+      & > .date-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: stretch;
+        align-items: center;
+        margin-top: auto;
+        padding: 0 20px 40px 20px;
+        text-align: center;
+        font-size: 16px;
+
+        & > .issue-date {
+          flex: 1 1 0;
+        }
+
+        & > .expire-date {
+          flex: 1 1 0;
+        }
+      }
+    }
+  }
+
+  & > .used-ticket-container {
+    display: flex;
+    flex-direction: row;
+    height: 140px;
+    justify-content: space-between;
+
+    & > .used-ticket {
+      width: 109px;
+      height: 139px;
+      background-color: #ebe8e8;
+      color: #c6c4c4;
+      text-align: center;
+      font-size: 16px;
+      padding-top: 20px;
+    }
+  }
+}

@@ -15,8 +15,9 @@ import './index.scss';
 
 export const customHistory = createBrowserHistory();
 
-const reduxString: string | null = localStorage.getItem('auth');
-const persistedState = reduxString ? JSON.parse(reduxString) : undefined;
+// const reduxString: string | null = localStorage.getItem('auth');
+// const persistedState = reduxString ? JSON.parse(reduxString) : undefined;
+const persistedState = { user: { userId: 1, addDate: new Date().toISOString() }};
 
 const sagaMiddleware = createSagaMiddleware({
   context: {
@@ -32,9 +33,9 @@ export const store = createStore(
 
 sagaMiddleware.run(rootSaga)
 
-store.subscribe(() => {
-  localStorage.setItem('auth', JSON.stringify(store.getState().auth));
-});
+// store.subscribe(() => {
+//   localStorage.setItem('auth', JSON.stringify(store.getState().auth));
+// });
 
 ReactDOM.render(
   <Provider store={store}>
