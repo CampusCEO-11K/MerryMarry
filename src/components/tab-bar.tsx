@@ -20,12 +20,14 @@ export function TabBar(props: Props) {
   const { current } = props;
 
   const tabs = Object.values(Tab).map(({ en, kr, route }) => (
-    <div
+    <Link
+      to={route}
       key={en}
       className={classnames({ selected: current.toString() === en }, 'tab-bar-item')}
     >
-      <Link to={route}>{kr}</Link>
-    </div>
+      <div className="tab-bar-icon"></div>
+      <span className="tab-bar-title">{kr}</span>
+    </Link>
   ));
 
   return (

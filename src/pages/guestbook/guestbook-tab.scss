@@ -1,0 +1,72 @@
+.guestbook-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  & > .layout-1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+
+    & > .button-1 {
+      width: 143px;
+      height: 143px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+
+      & > .icon-1 {
+        width: 80px;
+        height: 80px;
+        background-color: gray;
+        margin-bottom: 8px;
+      }
+
+      & > .title-1 {
+        font-size: 18px;
+        color: black;
+      }
+
+      &:first-child {
+        margin-right: 22px;
+      }
+    }
+  }
+
+  & > .layout-2 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    & > .button-2 {
+      width: 312px;
+      height: 103px;
+      background-color: white;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+
+      & > .icon-2 {
+        width: 30px;
+        height: 30px;
+        background-color: gray;
+        margin-right: 8px;
+      }
+
+      & > .title-2 {
+        font-size: 18px;
+        color: black;
+      }
+    }
+  }
+}

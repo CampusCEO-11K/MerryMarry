@@ -1,8 +1,8 @@
-import { PageHeader } from 'antd';
 import React, { useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
-import { TabBar } from 'src/components';
+import { TabBar, TopBar } from 'src/components';
 import { Tab } from 'src/components/tab-bar';
+import './tab-bar-layout.scss';
 
 interface Props {
   children?: React.ReactNode;
@@ -18,12 +18,12 @@ export default function TabBarLayout(props: Props) {
   }, [pathname]);
 
   return (
-    <>
-      <PageHeader title={Tab[currentTab].kr} />
+    <div className="tab-bar-layout">
+      <TopBar title={Tab[currentTab].kr} />
       <div className="content-layout">
         {props.children}
       </div>
       <TabBar current={currentTab} />
-    </>
+    </div>
   )
 }

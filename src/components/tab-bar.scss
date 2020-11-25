@@ -1,17 +1,39 @@
 .tab-bar {
   flex-direction: row;
   display: flex;
-  height: 48px;
+  height: 79px;
+  background-color: white;
+  border-top: 1px solid #d8d8d8;
 
   & > .tab-bar-item {
+
+    & > .tab-bar-icon {
+      background-color: #707070;
+      margin-top: 10px;
+      width: 30px;
+      height: 30px;
+    }
+
+    & > .tab-bar-title {
+      margin-top: 9px;
+      font-size: 10px;
+      color: #707070;
+    }
+
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     flex: 1 1 0;
-    border: 1px solid black;
   }
 
   & > .tab-bar-item.selected {
-    font-weight: bold;
+    & > .tab-bar-icon {
+      background-color: #cbb5e6;
+    }
+
+    & > .tab-bar-title {
+      color: #cbb5e6;
+    }
   }
 }
