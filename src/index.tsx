@@ -1,16 +1,17 @@
-import { applyMiddleware, createStore } from '@reduxjs/toolkit';
-import 'antd/dist/antd.css';
-import { createBrowserHistory } from 'history';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import logger from 'redux-logger';
 import { Provider } from 'react-redux';
 import { Router } from 'react-router-dom';
-import logger from 'redux-logger';
 import createSagaMiddleware from 'redux-saga';
-import App from './App';
+import { createBrowserHistory } from 'history';
+import { applyMiddleware, createStore } from '@reduxjs/toolkit';
+
 import { rootReducer, rootSaga } from './features';
-import './index.scss';
+import App from './App';
 import reportWebVitals from './reportWebVitals';
+import 'antd/dist/antd.css';
+import './index.scss';
 
 export const customHistory = createBrowserHistory();
 

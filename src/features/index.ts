@@ -5,6 +5,7 @@ import * as guestbook from './guestbook';
 import * as payment from './payment';
 import * as auth from './auth';
 import * as toss from './toss';
+import * as ticket from './ticket';
 
 export const rootReducer = combineReducers({
   payment: payment.reducer,
@@ -12,12 +13,12 @@ export const rootReducer = combineReducers({
   auth: auth.reducer,
   guestbook: guestbook.reducer,
   toss: toss.reducer,
+  ticket: ticket.reducer,
 });
 
 export const RootActions = {
   payment: payment.actions,
   dummy: dummy.actions,
-  auth: auth.actions,
   guestbook: guestbook.actions,
   toss: toss.actions,
 }
@@ -29,6 +30,7 @@ export function* rootSaga() {
     ...auth.sagas,
     ...guestbook.sagas,
     ...toss.sagas,
+    ...ticket.sagas,
   ]);
 }
 

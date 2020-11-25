@@ -2,6 +2,7 @@ import { PageHeader, Space } from 'antd';
 import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { RootActions } from 'src/features';
+import { authLoginRequest } from 'src/features/auth/login';
 import { guestbookWorkflowLoginSkip } from 'src/features/guestbook/workflow/payment';
 
 export default function GuestbookWorkflowLoginPage() {
@@ -12,7 +13,7 @@ export default function GuestbookWorkflowLoginPage() {
   })
 
   const onLogin = useCallback(() => {
-    dispatch(RootActions.auth.authLoginRequest(state));
+    dispatch(authLoginRequest(state));
   }, [dispatch, state]);
 
   const onSkip = useCallback(() => {

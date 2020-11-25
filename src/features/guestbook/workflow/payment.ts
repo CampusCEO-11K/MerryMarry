@@ -2,7 +2,7 @@ import { createAction } from '@reduxjs/toolkit';
 import { call, put, select, take, takeEvery } from 'redux-saga/effects';
 import { authAddApi, createGuestbookApi } from 'src/api';
 import { RootState } from 'src/features';
-import { authLoginSuccess } from 'src/features/auth';
+import { authLoginSuccess } from 'src/features/auth/login';
 import { tossReadyRequest } from 'src/features/toss/ready';
 import { tossApproveSuccess } from 'src/features/toss/success';
 import { Marriage, Transaction } from 'src/models';
@@ -38,7 +38,6 @@ function* fetch(action: ReturnType<typeof guestbookWorkflowPayment>) {
   }
 
   const userId2 = yield select((state: RootState) => state.auth.user?.userId);
-  console.log('userId2', userId2);
   const workflow = yield select((state: RootState) => state.guestbook.workflow);
   const params = {
     marriageId: workflow.marriage?.marriageId,
