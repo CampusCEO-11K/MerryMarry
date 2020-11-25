@@ -1,20 +1,35 @@
-import { PageHeader, Space } from 'antd';
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { MarriageCard } from 'src/components';
+import { TopBar } from 'src/components';
 import { RootActions, RootState } from 'src/features';
+import { Marriage } from 'src/models';
+import './guestbook-workflow-1-entry.scss';
+
+function parseName(marriage: Marriage) {
+  if (marriage.male.name && marriage.lady.name) {
+    return `${marriage.male.name} ❤️ ${marriage.lady.name}`;
+  } else if (marriage.male.name) {
+    return marriage.male.name;
+  } else if (marriage.lady.name) {
+    return marriage.lady.name;
+  } else {
+    return 'OOO';
+  }
+}
 
 export default function GuestbookWorkflowEntryPage() {
   const dispatch = useDispatch();
   const state = useSelector((state: RootState) => state.guestbook.workflow);
   const { marriage, isOnline } = state;
-  
+
   let msg = <div />;
   if (marriage) {
+    const name = parseName(marriage);
+
     if (isOnline) {
-      msg = <p>{marriage.male.name}❤️ {marriage.lady.name}의 결혼식에 참석하지는 못했지만, 축하하는 마음으로 방명록을 남기고 축의금을 간편하게 전달해보세요!</p>
+      msg = <p>{name}의 결혼식에 참석하지는 못했지만,<br />축하하는 마음으로 방명록을 남기고<br />축의금을 간편하게 전달해보세요!</p>
     } else {
-      msg = <p>{marriage.male.name}❤️ {marriage.lady.name}의 결혼식에 참석하셨네요! 방명록을 남기고 축의금을 간편하게 전달해보세요!</p>
+      msg = <p>{name}의 결혼식에 참석하셨네요!<br />방명록을 남기고 축의금을 간편하게 전달해보세요!</p>
     }
   }
 
@@ -24,12 +39,16 @@ export default function GuestbookWorkflowEntryPage() {
 
   return (
     <>
-      <PageHeader title="방명록" />
-      <Space direction="vertical" style={{ margin: '8px' }}>
-        {marriage && <MarriageCard marriage={marriage} />}
-        {msg}
-        <button type="button" className="btn btn-primary" onClick={onClick}>다음</button>
-      </Space>
+      <TopBar title="방명록" />
+      <div className="guestbook-workflow-1-entry">
+        <div className="layout-1">
+          <div className="icon"></div>
+          <div className="title">
+            {msg}
+          </div>
+        </div>
+        <button type="button" className="btn" onClick={onClick}>다음</button>
+      </div>
     </>
   )
 }
