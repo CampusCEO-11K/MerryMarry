@@ -26,9 +26,6 @@ export default function GuestbookTabPage() {
         </div>
 
         <Link className="btn btn-primary disabled" role="button" to="/">축하 메시지</Link>
-        
-        <Link className="btn btn-primary" role="button" to="/payment/test">카카오페이 테스트</Link>
-        <Link className="btn btn-primary" role="button" to="/qrcode-display">QRCode 생성</Link>
       </Space>
     </TabBarLayout>
   )

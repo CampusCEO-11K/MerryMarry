@@ -12,8 +12,8 @@ function App() {
       <Switch>
         <Route path="/qrcode-display" component={pages.QrcodeDisplayPage} />
 
-        <Route path="/payment/test/success" component={pages.PaymentTestSuccessPage} />
-        <Route path="/payment/test" component={pages.PaymentTestPage} />
+        <Route path="/toss/test" component={pages.TossTestPage} />
+        <Route path="/toss/ready-result" component={pages.TossReadyPage} />
         
         <Route path={routes.guestbook_workflow()} component={pages.GuestbookWorkflowPage} />
         <Route path={routes.guestbook_phone} component={pages.GuestbookPhonePage} />

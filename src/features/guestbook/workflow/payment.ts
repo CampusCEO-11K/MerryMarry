@@ -1,11 +1,12 @@
 import { createAction } from '@reduxjs/toolkit';
 import { call, put, select, take, takeEvery } from 'redux-saga/effects';
+import { authAddApi, createGuestbookApi } from 'src/api';
 import { RootState } from 'src/features';
 import { authLoginSuccess } from 'src/features/auth';
-import { GuestbookWorflowStep, slice } from '.';
-import { paymentRequest, paymentSuccess } from 'src/features/payment';
-import { authAddApi, createGuestbookApi } from 'src/api';
+import { tossReadyRequest } from 'src/features/toss/ready';
+import { tossApproveSuccess } from 'src/features/toss/success';
 import { Marriage, Transaction } from 'src/models';
+import { GuestbookWorflowStep, slice } from '.';
 
 export const guestbookWorkflowPayment = createAction<number | undefined>('guestbook/workflow/payment');
 export const guestbookWorkflowLoginSkip = createAction<undefined>('guestbook/workflow/login-skip');
@@ -29,10 +30,10 @@ function* fetch(action: ReturnType<typeof guestbookWorkflowPayment>) {
     const marriage: Marriage = yield select((state: RootState) => state.guestbook.workflow.marriage);
 
     const names = [marriage.male.name, marriage.lady.name].filter(v => !!v);
-    const itemName = `축의금: ${names.join(', ')}`;
+    const orderName = `축의금: ${names.join(', ')}`;
 
-    yield put(paymentRequest({ amount, itemName }));
-    const transaction: Transaction = (yield take(paymentSuccess.type)).payload;
+    yield put(tossReadyRequest({ amount, orderName }));
+    const transaction: Transaction = (yield take(tossApproveSuccess.type)).payload;
     transactionId = transaction.transactionId;
   }
 

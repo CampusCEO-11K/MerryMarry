@@ -1,7 +1,7 @@
+import { message } from "antd";
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 
 function axiosErrorToString(error: any): string {
-  console.log('error', error);
   if (error.response.data.msg) {
     return error.response.data.msg;
   } else if (error.response.data) {
@@ -18,7 +18,9 @@ function axiosErrorToString(error: any): string {
 axios.interceptors.response.use((response) => {
   return response;
 }, (error) => {
-  return Promise.reject(axiosErrorToString(error));
+  const errMsg = axiosErrorToString(error);
+  message.error(errMsg);
+  return Promise.reject(errMsg);
 });
 
 export default function axiosRequest<T = any>(config: AxiosRequestConfig): Promise<T> {
