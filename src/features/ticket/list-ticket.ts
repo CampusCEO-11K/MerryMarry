@@ -15,10 +15,6 @@ function* fetch() {
   }
 }
 
-function* watch() {
-  yield takeEvery(listTicketRequest.type, fetch);
-}
-
 export default [
-  watch(),
+  takeEvery(listTicketRequest.type, fetch),
 ];

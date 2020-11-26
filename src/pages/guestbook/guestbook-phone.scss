@@ -1,0 +1,21 @@
+.guestbook-phone {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > form {
+    width: 321px;
+
+    & input {
+      border-color: #E4D8D8;
+    }
+
+    & button {
+      width: 100%;
+      color: white;
+      background-color: #CBB5E6;
+    }
+  }
+}

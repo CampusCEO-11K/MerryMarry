@@ -1,8 +1,9 @@
-import { PageHeader, Space } from 'antd';
 import React, { useCallback, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { TopBar } from 'src/components';
 import { findGuestbookByPhone } from 'src/features/guestbook/find-guestbook-or-create';
+import './guestbook-phone.scss';
 
 export default function GuestbookPhonePage() {
   const history = useHistory();
@@ -11,7 +12,7 @@ export default function GuestbookPhonePage() {
   const [state, setState] = useState({
     name: '',
     phone: '',
-    isMale: false,
+    isMale: true,
   });
 
   const onChange = useCallback((e) => {
@@ -20,6 +21,13 @@ export default function GuestbookPhonePage() {
       ...v,
       [name]: value
     }));
+  }, []);
+
+  const onRadioChange = useCallback((e) => {
+    setState(v => ({
+      ...v,
+      isMale: e.target.value === 'male'
+    }))
   }, []);
 
   const onSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
@@ -31,10 +39,12 @@ export default function GuestbookPhonePage() {
     }
   }, [dispatch, state]);
 
+  console.log(state);
+
   return (
     <>
-      <PageHeader title="방명록" onBack={history.goBack} />
-      <Space direction="vertical" style={{ margin: '8px' }}>
+      <TopBar title="방명록" />
+      <div className="guestbook-phone">
         <form className="needs-validation" onSubmit={onSubmit} ref={form} noValidate>
           <div className="form-group">
             <label>예비신랑/신부의 이름</label>
@@ -46,9 +56,19 @@ export default function GuestbookPhonePage() {
             <input type="number" className="form-control" name="phone" onChange={onChange} required />
             <div className="invalid-feedback">전화번호를 입력해주세요</div>
           </div>
-          <button type="submit" className="btn btn-primary">다음</button>
+          <div className="form-group">
+            <div className="form-check form-check-inline">
+              <input className="form-check-input" type="radio" name="gender-radio" value="male" checked={state.isMale} onChange={onRadioChange} />
+              <label className="form-check-label">신랑</label>
+            </div>
+            <div className="form-check form-check-inline">
+              <input className="form-check-input" type="radio" name="gender-radio" value="lady" checked={!state.isMale} onChange={onRadioChange} />
+              <label className="form-check-label">신부</label>
+            </div>
+          </div>
+          <button className="btn">다음</button>
         </form>
-      </Space>
+      </div>
     </>
   )
 }
