@@ -2,7 +2,7 @@ import { PageHeader, Space } from 'antd';
 import React, { useCallback, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { tossReadyRequest } from 'src/features/toss/ready';
+import { tossReadyRequest } from 'src/features/payment/toss';
 
 export default function PaymentTestPage() {
   const history = useHistory();

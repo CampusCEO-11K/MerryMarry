@@ -1,13 +1,14 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { TopBar } from 'src/components';
-import { RootActions, RootState } from 'src/features';
+import { guestbookWorkflowEntry } from 'src/features/guestbook/workflow/2-entry';
+import { RootState } from 'src/store';
 import { getNameFromMarriage } from 'src/utils';
 import './guestbook-workflow-1-entry.scss';
 
 export default function GuestbookWorkflowEntryPage() {
   const dispatch = useDispatch();
-  const state = useSelector((state: RootState) => state.guestbook.workflow);
+  const state = useSelector((state: RootState) => state.guestbookWorkflow);
   const { marriage, isOnline } = state;
 
   let msg = <div />;
@@ -22,7 +23,7 @@ export default function GuestbookWorkflowEntryPage() {
   }
 
   const onClick = useCallback(() => {
-    dispatch(RootActions.guestbook.workflow.entry());
+    dispatch(guestbookWorkflowEntry());
   }, [dispatch]);
 
   return (

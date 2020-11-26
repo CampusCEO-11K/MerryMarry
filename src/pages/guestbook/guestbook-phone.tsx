@@ -2,7 +2,7 @@ import { PageHeader, Space } from 'antd';
 import React, { useCallback, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { guestbookPhone } from 'src/features/guestbook/phone';
+import { findGuestbookByPhone } from 'src/features/guestbook/find-guestbook-or-create';
 
 export default function GuestbookPhonePage() {
   const history = useHistory();
@@ -11,6 +11,7 @@ export default function GuestbookPhonePage() {
   const [state, setState] = useState({
     name: '',
     phone: '',
+    isMale: false,
   });
 
   const onChange = useCallback((e) => {
@@ -24,7 +25,7 @@ export default function GuestbookPhonePage() {
   const onSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (form.current?.checkValidity()) {
-      dispatch(guestbookPhone(state));
+      dispatch(findGuestbookByPhone(state));
     } else {
       form.current?.classList.add('was-validated');
     }

@@ -1,8 +1,8 @@
 import { Marriage } from "src/models";
 
 export function getNameFromMarriage(marriage: Marriage): string {
-  const maleName = marriage.male.name;
-  const ladyName = marriage.lady.name;
+  const maleName = marriage.maleName;
+  const ladyName = marriage.ladyName;
 
   if (maleName && ladyName) {
     return `${maleName} ❤️ ${ladyName}`;

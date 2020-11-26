@@ -2,19 +2,18 @@ import { API_SERVER } from 'src/envs';
 import { Transaction } from 'src/models';
 import request from '../request';
 
-export function tossApprove(params: tossApprove.Params): Promise<tossApprove.Result> {
+export function kakaoApproveApi(params: kakaoApproveApi.Params): Promise<kakaoApproveApi.Result> {
   return request({
-    url: `${API_SERVER}/payment/toss`,
+    url: `${API_SERVER}/payment/kakao/approve`,
     method: 'post',
     data: params,
   });
 }
 
-export declare namespace tossApprove {
+export declare namespace kakaoApproveApi {
   export type Params = {
-    paymentKey: string;
-    orderId: string;
-    amount: number;
+    pgToken: string;
+    tid: string;
   }
   
   export type Result = Transaction;

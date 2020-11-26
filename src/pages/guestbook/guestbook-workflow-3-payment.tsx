@@ -1,25 +1,25 @@
 import { PageHeader, Space } from 'antd';
 import React, { useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootActions, RootState } from 'src/features';
-import { guestbookWorkflowPayment } from 'src/features/guestbook/workflow/payment';
+import { RootState, RootActions } from 'src/store';
+import { guestbookWorkflowPayment } from 'src/features/guestbook/workflow/4-payment';
 
 export default function GuestbookWorkflowPaymentPage() {
   const dispatch = useDispatch();
-  const amount = useSelector((state: RootState) => state.guestbook.workflow.amount);
+  const amount = useSelector((state: RootState) => state.guestbookWorkflow.amount);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const onPayment = useCallback(() => {
-    const value = parseInt(inputRef.current!.value);
-    dispatch(guestbookWorkflowPayment(value));
+    const amount = parseInt(inputRef.current!.value);
+    dispatch(guestbookWorkflowPayment({ amount }));
   }, [dispatch, inputRef]);
 
   const onSkip = useCallback(() => {
-    dispatch(guestbookWorkflowPayment());
+    dispatch(guestbookWorkflowPayment({ amount: 0 }));
   }, [dispatch]);
 
   const onBack = useCallback(() => {
-    dispatch(RootActions.guestbook.workflow.back())
+    dispatch(RootActions.guestbookWorkflow.back());
   }, [dispatch]);
 
   return (

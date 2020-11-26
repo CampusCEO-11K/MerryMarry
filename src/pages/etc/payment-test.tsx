@@ -1,15 +1,13 @@
-import { InputNumber, PageHeader, Space, Spin } from 'antd';
+import { InputNumber, PageHeader, Space } from 'antd';
 import React, { useCallback, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { RootActions, RootState } from 'src/features';
+import { paymentKakaoRequest } from 'src/features/payment/kakao';
 
 export default function PaymentTestPage() {
   const history = useHistory();
   const dispatch = useDispatch();
   const [value, setValue] = useState(30000);
-  const loading = useSelector((state: RootState) => state.payment.loading);
-  const status = useSelector((state: RootState) => state.payment.status);
 
   const onChange = useCallback((v: string | number | undefined) => {
     if (typeof v === 'string') {
@@ -34,11 +32,11 @@ export default function PaymentTestPage() {
   }, []);
 
   const onClick = useCallback(() => {
-    dispatch(RootActions.payment.paymentRequest({ amount: value, itemName: '카카오페이 테스트' }));
+    dispatch(paymentKakaoRequest({ amount: value, itemName: '카카오페이 테스트' }));
   }, [dispatch, value]);
 
   return (
-    <Spin tip={status} size="large" spinning={loading}>
+    <>
       <PageHeader title="카카오페이 테스트" onBack={history.goBack} />
       <Space direction="vertical" style={{ margin: '8px' }}>
         <InputNumber
@@ -56,6 +54,6 @@ export default function PaymentTestPage() {
           카카오페이 결제 테스트
       </div>
       </Space>
-    </Spin>
+    </>
   )
 }

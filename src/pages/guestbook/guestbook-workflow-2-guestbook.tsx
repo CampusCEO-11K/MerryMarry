@@ -2,17 +2,18 @@ import { PageHeader, Space } from 'antd';
 import React, { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { GuestbookForm } from 'src/components';
-import { RootActions } from 'src/features';
+import { guestbookWorkflowGuestbook } from 'src/features/guestbook/workflow/3-guestbook';
+import { RootActions } from 'src/store';
 
 export default function GuestbookWorflowGuestbookPage() {
   const dispatch = useDispatch();
 
   const onSubmit = useCallback((guestbook: { name: string, belong: string, msg: string }) => {
-    dispatch(RootActions.guestbook.workflow.guestbook(guestbook))
+    dispatch(guestbookWorkflowGuestbook(guestbook))
   }, [dispatch]);
 
   const onBack = useCallback(() => {
-    dispatch(RootActions.guestbook.workflow.back())
+    dispatch(RootActions.guestbookWorkflow.back())
   }, [dispatch]);
 
   return (

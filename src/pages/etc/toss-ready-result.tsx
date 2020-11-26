@@ -1,8 +1,7 @@
 import qs from 'query-string';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { tossApproveRequest } from 'src/features/toss/approve';
-import { tossReadyFailure } from 'src/features/toss/ready';
+import { tossReadySuccess, tossReadyFailure } from 'src/features/payment/toss';
 
 export default function TossReadyResultPage() {
   const dispatch = useDispatch();
@@ -15,7 +14,7 @@ export default function TossReadyResultPage() {
       const paymentKey = parsed.paymentKey as string;
       const orderId = parsed.orderId as string;
       const amount = parsed.amount as number;
-      dispatch(tossApproveRequest({ paymentKey, orderId, amount }));
+      dispatch(tossReadySuccess({ paymentKey, orderId, amount }));
     } else {
       const code = parsed.code as string;
       const message = parsed.message as string;
@@ -25,7 +24,7 @@ export default function TossReadyResultPage() {
 
   return (
     <div>
-      {JSON.stringify(qs.parse(window.location.search), null, 2)}
+      처리중입니다...
     </div>
   )
 }

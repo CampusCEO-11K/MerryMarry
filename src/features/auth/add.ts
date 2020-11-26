@@ -1,18 +1,16 @@
 import { createAction } from '@reduxjs/toolkit';
 import { call, put, takeEvery } from 'redux-saga/effects';
 import { authAddApi } from 'src/api';
+import { RootActions } from 'src/store';
 
-export const authAddRequest = createAction<authAddApi.Params>('auth/add/request');
-export const authAddSuccess = createAction<authAddApi.Result>('auth/add/success');
-export const authAddFailure = createAction<string>('auth/add/failure');
+export const authAddRequest = createAction<undefined>('auth/add/request');
 
-// Sagas
-function* fetch(action: ReturnType<typeof authAddRequest>) {
+function* fetch() {
   try {
-    const result: authAddApi.Result = yield call(authAddApi, action.payload);
-    yield put(authAddSuccess(result));
-  } catch (error) {
-    yield put(authAddFailure(error));
+    const result: authAddApi.Result = yield call(authAddApi, {});
+    yield put(RootActions.auth.set({ user: result }));
+  } catch (err) {
+    
   }
 }
 
@@ -20,6 +18,6 @@ function* watch() {
   yield takeEvery(authAddRequest.type, fetch);
 }
 
-export const sagas = [
+export default [
   watch(),
 ];

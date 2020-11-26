@@ -7,7 +7,8 @@ import createSagaMiddleware from 'redux-saga';
 import { createBrowserHistory } from 'history';
 import { applyMiddleware, createStore } from '@reduxjs/toolkit';
 
-import { rootReducer, rootSaga } from './features';
+import { rootSaga } from './features';
+import { rootReducer } from './store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'antd/dist/antd.css';
@@ -15,9 +16,8 @@ import './index.scss';
 
 export const customHistory = createBrowserHistory();
 
-// const reduxString: string | null = localStorage.getItem('auth');
-// const persistedState = reduxString ? JSON.parse(reduxString) : undefined;
-const persistedState = { user: { userId: 1, addDate: new Date().toISOString() }};
+const reduxString: string | null = localStorage.getItem('redux');
+const persistedState = reduxString ? JSON.parse(reduxString) : undefined;
 
 const sagaMiddleware = createSagaMiddleware({
   context: {
@@ -27,15 +27,15 @@ const sagaMiddleware = createSagaMiddleware({
 
 export const store = createStore(
   rootReducer,
-  { auth: persistedState },
+  persistedState,
   applyMiddleware(sagaMiddleware, logger),
 )
 
 sagaMiddleware.run(rootSaga)
 
-// store.subscribe(() => {
-//   localStorage.setItem('auth', JSON.stringify(store.getState().auth));
-// });
+store.subscribe(() => {
+  localStorage.setItem('redux', JSON.stringify(store.getState()));
+});
 
 ReactDOM.render(
   <Provider store={store}>

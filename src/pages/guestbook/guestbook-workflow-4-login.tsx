@@ -1,9 +1,8 @@
 import { PageHeader, Space } from 'antd';
 import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { RootActions } from 'src/features';
-import { authLoginRequest } from 'src/features/auth/login';
-import { guestbookWorkflowLoginSkip } from 'src/features/guestbook/workflow/payment';
+import { guestbookWorkflowLoginRequest, guestbookWorkflowLoginSkip } from 'src/features/guestbook/workflow/5-login';
+import { RootActions } from 'src/store';
 
 export default function GuestbookWorkflowLoginPage() {
   const dispatch = useDispatch();
@@ -13,7 +12,7 @@ export default function GuestbookWorkflowLoginPage() {
   })
 
   const onLogin = useCallback(() => {
-    dispatch(authLoginRequest(state));
+    dispatch(guestbookWorkflowLoginRequest(state));
   }, [dispatch, state]);
 
   const onSkip = useCallback(() => {
@@ -29,7 +28,7 @@ export default function GuestbookWorkflowLoginPage() {
   }, []);
 
   const onBack = useCallback(() => {
-    dispatch(RootActions.guestbook.workflow.back())
+    dispatch(RootActions.guestbookWorkflow.back())
   }, [dispatch]);
 
   return (

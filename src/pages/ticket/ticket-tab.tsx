@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'src/features';
+import { RootState } from 'src/store';
 import { listTicketRequest } from 'src/features/ticket/list-ticket';
 import { Ticket } from 'src/models';
 import { getNameFromMarriage } from 'src/utils';
@@ -33,7 +33,7 @@ function MainTicket({ ticket }: { ticket: Ticket }) {
 
 export default function TicketPage() {
   const dispatch = useDispatch();
-  const tickets = useSelector((state: RootState) => state.ticket);
+  const tickets = useSelector((state: RootState) => state.tickets);
 
   useEffect(() => {
     dispatch(listTicketRequest());

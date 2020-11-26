@@ -3,9 +3,15 @@ import { loadTossPayments } from '@tosspayments/sdk';
 import { call, takeEvery } from 'redux-saga/effects';
 import { TOSS_CLIENT_KEY } from 'src/envs';
 
-interface ActionPayload {
+interface TossReadyRequestPayload {
   amount: number;
   orderName: string;
+}
+
+interface TossReadySuccessPayload {
+  paymentKey: string;
+  orderId: string;
+  amount: number;
 }
 
 interface TossReadyFailurePayload {
@@ -13,7 +19,8 @@ interface TossReadyFailurePayload {
   message: string;
 }
 
-export const tossReadyRequest = createAction<ActionPayload>('toss/ready');
+export const tossReadyRequest = createAction<TossReadyRequestPayload>('toss/ready/request');
+export const tossReadySuccess = createAction<TossReadySuccessPayload>('toss/ready/success')
 export const tossReadyFailure = createAction<TossReadyFailurePayload>('toss/ready/failure');
 
 function* fetch({ payload }: ReturnType<typeof tossReadyRequest>) {
@@ -24,16 +31,12 @@ function* fetch({ payload }: ReturnType<typeof tossReadyRequest>) {
   tossPayments.requestPayment('카드', {
     amount,
     orderName,
-    orderId: Date.now().toString(),
-    successUrl: window.location.origin + '/toss/ready-result?status=success',
-    failUrl: window.location.origin + '/toss/ready-result?status=failure',
+    orderId: 'a' + Date.now().toString(),
+    successUrl: window.location.origin + `/toss/ready-result?status=success`,
+    failUrl: window.location.origin + `/toss/ready-result?status=failure`,
   });
 }
 
-function* watch() {
-  yield takeEvery(tossReadyRequest.type, fetch);
-}
-
-export const sagas = [
-  watch(),
+export default [
+  takeEvery(tossReadyRequest.type, fetch),
 ];

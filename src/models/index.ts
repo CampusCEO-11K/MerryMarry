@@ -9,11 +9,13 @@ export interface User {
 
 export interface Marriage {
   marriageId: number;
-  male: User;
-  lady: User;
-  location: string;
-  account: string;
-  bank: string;
+  maleName?: string;
+  malePhone?: string;
+  ladyName?: string;
+  ladyPhone?: string;
+  location?: string;
+  account?: string;
+  bank?: string;
 }
 
 export interface Transaction {

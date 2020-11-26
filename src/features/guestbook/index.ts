@@ -1,16 +1,7 @@
-import { combineReducers } from '@reduxjs/toolkit';
-import * as workflow from './workflow';
-import * as phone from './phone';
+import workflow from './workflow';
+import findGuestbookOrCreate from './find-guestbook-or-create';
 
-export const reducer = combineReducers({
-  workflow: workflow.slice.reducer,
-});
-
-export const actions = {
-  workflow: workflow.slice.actions,
-}
-
-export const sagas = [
-  ...workflow.sagas,
-  ...phone.sagas,
-];
+export default [
+  ...workflow,
+  ...findGuestbookOrCreate,
+]

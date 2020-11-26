@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import * as routes from 'src/utils/routes';
-import { RootState } from './features';
 import { authAddRequest } from './features/auth/add';
 import { useWindowSize } from './hooks';
 import * as pages from './pages';
+import { RootState } from './store';
 
 function App() {
   const [width] = useWindowSize();
@@ -15,10 +15,10 @@ function App() {
 
   useEffect(() => {
     if (!user) {
-      dispatch(authAddRequest({}))
+      dispatch(authAddRequest())
     }
-  }, [dispatch, user])
-
+  }, [dispatch, user]);
+  
   const content = (
     <div id="app-container">
       <Switch>
@@ -27,6 +27,7 @@ function App() {
         <Route path="/toss/test" component={pages.TossTestPage} />
         <Route path="/toss/ready-result" component={pages.TossReadyPage} />
 
+        <Route path={routes.guestbook_workflow_success} component={pages.GuestbookSuccessPage} />
         <Route path={routes.guestbook_workflow()} component={pages.GuestbookWorkflowPage} />
         <Route path={routes.guestbook_phone} component={pages.GuestbookPhonePage} />
         <Route path={routes.guestbook_qrcode} component={pages.GuestbookQrcodePage} />

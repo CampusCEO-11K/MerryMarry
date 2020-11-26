@@ -16,6 +16,7 @@ export const guestbook_workflow = (query?: GuestbookWorkflowQuery) => {
     : '';
   return `/guestbook/workflow${querystring}`
 };
+export const guestbook_workflow_success = "/guestbook/workflow/success";
 export const guestbook_qrcode = `/guestbook/find-by-qrcode`;
 export const guestbook_phone = "/guestbook/find-by-phone";
 export const guestbook = "/guestbook";

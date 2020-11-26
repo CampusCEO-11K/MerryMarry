@@ -1,15 +1,15 @@
 import { API_SERVER } from 'src/envs';
 import request from '../request';
 
-export function paymentReady(params: paymentReady.Params): Promise<paymentReady.Result> {
+export function kakaoReadyApi(params: kakaoReadyApi.Params): Promise<kakaoReadyApi.Result> {
   return request({
-    url: `${API_SERVER}/payment/ready`,
+    url: `${API_SERVER}/payment/kakao/ready`,
     method: 'post',
     data: params,
   })
 }
 
-export declare namespace paymentReady {
+export declare namespace kakaoReadyApi {
   export type Params = {
     amount: number;
     itemName: string;

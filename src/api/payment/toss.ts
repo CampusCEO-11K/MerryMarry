@@ -2,18 +2,19 @@ import { API_SERVER } from 'src/envs';
 import { Transaction } from 'src/models';
 import request from '../request';
 
-export function paymentApprove(params: paymentApprove.Params): Promise<paymentApprove.Result> {
+export function tossApi(params: tossApi.Params): Promise<tossApi.Result> {
   return request({
-    url: `${API_SERVER}/payment/approve`,
+    url: `${API_SERVER}/payment/toss`,
     method: 'post',
     data: params,
   });
 }
 
-export declare namespace paymentApprove {
+export declare namespace tossApi {
   export type Params = {
-    pgToken: string;
-    tid: string;
+    paymentKey: string;
+    orderId: string;
+    amount: number;
   }
   
   export type Result = Transaction;

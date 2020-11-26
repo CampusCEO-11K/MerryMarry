@@ -1,6 +1,6 @@
 import React, { useCallback, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from 'src/features';
+import { RootState } from 'src/store';
 
 interface Props {
   onSubmit: (guestbook: {name: string, belong: string, msg: string}) => void;
@@ -8,8 +8,8 @@ interface Props {
 
 export default function GuestbookForm(props: Props) {
   const form = useRef<HTMLFormElement>(null);
-  const user = useSelector((state: RootState) => state.auth.user);
-  const workflow = useSelector((state: RootState) => state.guestbook.workflow);
+  const name = useSelector((state: RootState) => state.auth.user?.name);
+  const workflow = useSelector((state: RootState) => state.guestbookWorkflow);
 
   const onSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -30,10 +30,10 @@ export default function GuestbookForm(props: Props) {
         <input
           className="form-control"
           name="name"
-          defaultValue={workflow.name}
+          defaultValue={name ? undefined : workflow.name}
           required
-          readOnly={!!user}
-          value={user?.name}
+          readOnly={!!name}
+          value={name}
         />
         <div className="invalid-feedback">본인의 이름을 입력해주세요!</div>
       </div>
