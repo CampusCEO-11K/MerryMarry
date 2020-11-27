@@ -1,6 +1,5 @@
 import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { TopBar } from 'src/components';
 import { guestbookWorkflowLoginRequest, guestbookWorkflowLoginSkip } from 'src/features/guestbook/workflow/5-login';
 import { RootActions } from 'src/store';
 import MainLayout from '../layouts/main-layout';

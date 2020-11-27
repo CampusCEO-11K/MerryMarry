@@ -15,6 +15,8 @@ function* fetch() {
   }
 }
 
-export default [
+const sagas = [
   takeEvery(listGuestbookRequest.type, fetch),
 ];
+
+export default sagas;

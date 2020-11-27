@@ -11,18 +11,6 @@ export default function PaymentTestPage() {
     setValue(parseInt(e.target.value));
   }, []);
 
-  const formatter = useCallback((v: string | number | undefined) => {
-    const tmp = (v || '').toString()
-      .replace(/^0+/, '')
-      .replace(/\D+/g, '')
-      .replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    return `₩ ${tmp || 0}`
-  }, []);
-
-  const parser = useCallback((v: string | number | undefined) => {
-    return (v || '').toString().replace(/\D+/g, '');
-  }, []);
-
   const onClick = useCallback(() => {
     dispatch(paymentKakaoRequest({ amount: value, itemName: '카카오페이 테스트' }));
   }, [dispatch, value]);

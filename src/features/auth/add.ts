@@ -14,10 +14,8 @@ function* fetch() {
   }
 }
 
-function* watch() {
-  yield takeEvery(authAddRequest.type, fetch);
-}
+const sagas = [
+  takeEvery(authAddRequest.type, fetch),
+]
 
-export default [
-  watch(),
-];
+export default sagas;

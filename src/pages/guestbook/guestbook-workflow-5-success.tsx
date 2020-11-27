@@ -1,7 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { TopBar } from 'src/components';
 import { RootState } from 'src/store';
 import { getNameFromMarriage } from 'src/utils';
 import { data, ticket } from 'src/utils/routes';

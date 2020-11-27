@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { TopBar } from 'src/components';
 import { guestbookWorkflowEntry } from 'src/features/guestbook/workflow/2-entry';
 import { RootState } from 'src/store';
 import { getNameFromMarriage } from 'src/utils';

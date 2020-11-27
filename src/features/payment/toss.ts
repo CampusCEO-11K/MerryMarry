@@ -37,6 +37,8 @@ function* fetch({ payload }: ReturnType<typeof tossReadyRequest>) {
   });
 }
 
-export default [
+const sagas = [
   takeEvery(tossReadyRequest.type, fetch),
-];
+]
+
+export default sagas;

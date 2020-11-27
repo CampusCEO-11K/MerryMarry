@@ -1,7 +1,9 @@
 import kakao from './kakao';
 import toss from './toss';
 
-export default [
+const sagas = [
   ...kakao,
   ...toss,
 ]
+
+export default sagas;

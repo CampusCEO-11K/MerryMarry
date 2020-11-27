@@ -16,6 +16,8 @@ function* fetch({ payload }: ReturnType<typeof findGuestbookByPhone>) {
   }
 }
 
-export default [
+const sagas = [
   takeEvery(findGuestbookByPhone.type, fetch)
 ];
+
+export default sagas;

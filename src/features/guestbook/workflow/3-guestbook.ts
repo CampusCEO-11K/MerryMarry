@@ -15,6 +15,8 @@ function* fetch({ payload }: ReturnType<typeof guestbookWorkflowGuestbook>) {
   yield put(RootActions.guestbookWorkflow.update({ ...payload, step: GuestbookWorkflowStoreStep.payment }));
 }
 
-export default [
+const sagas = [
   takeEvery(guestbookWorkflowGuestbook.type, fetch)
 ]
+
+export default sagas;

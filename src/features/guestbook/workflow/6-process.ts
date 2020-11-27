@@ -1,5 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
-import { call, getContext, put, select, take, takeEvery } from 'redux-saga/effects';
+import { call, getContext, put, select, takeEvery } from 'redux-saga/effects';
 import { workflowGuestbookApi } from 'src/api';
 import { tossReadyRequest, tossReadySuccess } from 'src/features/payment/toss';
 import { User } from 'src/models';
@@ -54,7 +54,9 @@ function* common(toss: workflowGuestbookApi.TossPayload | undefined) {
   history.push(guestbook_workflow_success);
 }
 
-export default [
+const sagas = [
   takeEvery(guestbookWorkflowProcess.type, fetchGuestbookWorkflowProcess),
   takeEvery(tossReadySuccess.type, fetchTossReadySuccess),
 ]
+
+export default sagas;

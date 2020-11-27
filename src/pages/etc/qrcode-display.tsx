@@ -1,11 +1,9 @@
 import React, { useCallback, useState } from 'react';
 import QRCode from 'qrcode.react';
-import { useHistory } from 'react-router-dom';
 import { TopBar } from 'src/components';
 
 
 export default function QrcodeDisplayPage() {
-  const history = useHistory();
   const [value, setValue] = useState('https://www.naver.com');
 
   const onValueChange = useCallback((e: React.ChangeEvent<HTMLTextAreaElement>) => {

@@ -1,5 +1,7 @@
 import add from './add';
 
-export default [
+const sagas = [
   ...add,
 ]
+
+export default sagas;

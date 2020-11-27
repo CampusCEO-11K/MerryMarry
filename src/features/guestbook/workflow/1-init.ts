@@ -17,6 +17,8 @@ function* fetch({ payload }: ReturnType<typeof guestbookWorkflowInit>) {
   yield put(RootActions.guestbookWorkflow.update({ marriage, isOnline }));
 }
 
-export default [
+const sagas = [
   takeEvery(guestbookWorkflowInit.type, fetch)
 ]
+
+export default sagas;

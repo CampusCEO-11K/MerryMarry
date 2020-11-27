@@ -55,6 +55,8 @@ function* fetch(action: ReturnType<typeof paymentKakaoRequest>) {
   }
 }
 
-export default [
+const sagas = [
   takeEvery(paymentKakaoRequest.type, fetch)
-];
+]
+
+export default sagas;

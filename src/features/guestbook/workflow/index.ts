@@ -5,7 +5,7 @@ import payment from './4-payment';
 import login from './5-login';
 import process from './6-process';
 
-export default [
+const sagas = [
   ...init,
   ...entry,
   ...guestbook,
@@ -13,3 +13,5 @@ export default [
   ...login,
   ...process,
 ]
+
+export default sagas;

@@ -17,7 +17,9 @@ function* fetchLoginRequest({ payload }: ReturnType<typeof guestbookWorkflowLogi
   yield put(guestbookWorkflowProcess());
 }
 
-export default [
+const sagas = [
   takeEvery(guestbookWorkflowLoginSkip.type, fetchLoginSkip),
   takeEvery(guestbookWorkflowLoginRequest.type, fetchLoginRequest),
 ]
+
+export default sagas;

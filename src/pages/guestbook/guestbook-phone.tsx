@@ -1,12 +1,10 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { findGuestbookByPhone } from 'src/features/guestbook/find-guestbook-or-create';
 import MainLayout from '../layouts/main-layout';
 import './guestbook-phone.scss';
 
 export default function GuestbookPhonePage() {
-  const history = useHistory();
   const dispatch = useDispatch();
   const form = useRef<HTMLFormElement>(null);
   const [state, setState] = useState({

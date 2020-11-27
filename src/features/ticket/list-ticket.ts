@@ -15,6 +15,8 @@ function* fetch() {
   }
 }
 
-export default [
+const sagas = [
   takeEvery(listTicketRequest.type, fetch),
-];
+]
+
+export default sagas;

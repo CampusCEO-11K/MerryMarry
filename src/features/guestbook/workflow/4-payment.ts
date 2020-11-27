@@ -20,6 +20,8 @@ function* fetch({ payload }: ReturnType<typeof guestbookWorkflowPayment>) {
   }
 }
 
-export default [
+const sagas = [
   takeEvery(guestbookWorkflowPayment.type, fetch)
 ]
+
+export default sagas;

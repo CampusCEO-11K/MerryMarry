@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { GuestbookForm, MarriageCard, TopBar } from 'src/components';
+import { GuestbookForm, MarriageCard } from 'src/components';
 import { guestbookWorkflowGuestbook } from 'src/features/guestbook/workflow/3-guestbook';
 import { RootActions, RootState } from 'src/store';
 import MainLayout from '../layouts/main-layout';

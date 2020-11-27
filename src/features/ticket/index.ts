@@ -1,5 +1,7 @@
 import listTicket from './list-ticket';
 
-export default [
+const sagas = [
   ...listTicket,
 ]
+
+export default sagas;

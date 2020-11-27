@@ -9,6 +9,8 @@ function* fetch() {
   yield put(RootActions.guestbookWorkflow.update({ step: GuestbookWorkflowStoreStep.guestbook }));
 }
 
-export default [
+const sagas = [
   takeEvery(guestbookWorkflowEntry.type, fetch)
 ]
+
+export default sagas;
