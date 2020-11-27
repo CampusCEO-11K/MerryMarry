@@ -6,6 +6,7 @@ export { getMarriageApi } from './marriage/get-marriage';
 export { findMarriageOrcreateApi } from './marriage/find-marriage-or-create';
 
 export { workflowGuestbookApi } from './guestbook/workflow';
+export { listGuestbookApi } from './guestbook/list-guestbook';
 
 export { kakaoReadyApi } from './payment/kakao-ready';
 export { kakaoApproveApi } from './payment/kakao-approve';

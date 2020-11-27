@@ -37,4 +37,5 @@ export interface GuestbookForUser {
   belong?: string;
   msg?: string;
   isOnline: boolean;
+  date: string;
 }

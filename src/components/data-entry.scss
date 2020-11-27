@@ -1,0 +1,15 @@
+.data-entry {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+
+  &:not(:last-child) {
+    margin-bottom: 40px;
+  }
+
+  & .title {
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 11px;
+  }
+}

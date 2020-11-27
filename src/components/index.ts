@@ -5,3 +5,5 @@ export { default as PhoneTopSVG } from './phone-top-svg';
 export { default as PhoneBottomSVG } from './phone-bottom-svg';
 export { default as MarriageCard } from './marriage-card';
 export { default as GuestbookForm } from './guestbook-form';
+export { default as DataEntry } from './data-entry';
+export { default as DataCell } from './data-cell';
