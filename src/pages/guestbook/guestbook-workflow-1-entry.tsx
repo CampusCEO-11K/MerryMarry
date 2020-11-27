@@ -4,6 +4,7 @@ import { TopBar } from 'src/components';
 import { guestbookWorkflowEntry } from 'src/features/guestbook/workflow/2-entry';
 import { RootState } from 'src/store';
 import { getNameFromMarriage } from 'src/utils';
+import MainLayout from '../layouts/main-layout';
 import './guestbook-workflow-1-entry.scss';
 
 export default function GuestbookWorkflowEntryPage() {
@@ -27,8 +28,7 @@ export default function GuestbookWorkflowEntryPage() {
   }, [dispatch]);
 
   return (
-    <>
-      <TopBar title="방명록" />
+    <MainLayout title="방명록" onBack={true}>
       <div className="guestbook-workflow-1-entry">
         <div className="layout-1">
           <div className="icon"></div>
@@ -38,6 +38,6 @@ export default function GuestbookWorkflowEntryPage() {
         </div>
         <button type="button" className="btn" onClick={onClick}>다음</button>
       </div>
-    </>
+    </MainLayout>
   )
 }

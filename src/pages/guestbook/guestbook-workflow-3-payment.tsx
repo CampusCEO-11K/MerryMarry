@@ -1,8 +1,9 @@
-import { PageHeader, Space } from 'antd';
 import React, { useCallback, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState, RootActions } from 'src/store';
 import { guestbookWorkflowPayment } from 'src/features/guestbook/workflow/4-payment';
+import { RootActions, RootState } from 'src/store';
+import MainLayout from '../layouts/main-layout';
+import './guestbook-workflow-3-payment.scss';
 
 export default function GuestbookWorkflowPaymentPage() {
   const dispatch = useDispatch();
@@ -23,24 +24,23 @@ export default function GuestbookWorkflowPaymentPage() {
   }, [dispatch]);
 
   return (
-    <>
-      <PageHeader title="축의금 송금" onBack={onBack} />
-      <Space direction="vertical" style={{ margin: '8px' }}>
-        <p>축의금도 간편하게 전달하시겠어요?</p>
+    <MainLayout title="축의금 송금" onBack={onBack}>
+      <div className="guestbook-workflow-3-payment">
+        <p className="title">축의금도 간편하게 전달하시겠어요?</p>
         <input
           ref={inputRef}
           className="form-control"
           placeholder="금액을 입력해주세요"
           type="number"
-          defaultValue={amount?.toString()}
+          defaultValue={amount || undefined}
         />
-        <button type="button" className="btn btn-primary" onClick={onPayment}>
-          카카오 페이 결제
+        <button type="button" className="btn payment-btn" onClick={onPayment}>
+          송금하기
         </button>
-        <button type="button" className="btn btn-primary" onClick={onSkip}>
+        <button type="button" className="btn skip-btn" onClick={onSkip}>
           건너뛰기
         </button>
-      </Space>
-    </>
+      </div>
+    </MainLayout>
   )
 }

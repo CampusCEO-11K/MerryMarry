@@ -1,22 +1,14 @@
-import { InputNumber, PageHeader, Space } from 'antd';
 import React, { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { TopBar } from 'src/components';
 import { paymentKakaoRequest } from 'src/features/payment/kakao';
 
 export default function PaymentTestPage() {
-  const history = useHistory();
   const dispatch = useDispatch();
   const [value, setValue] = useState(30000);
 
-  const onChange = useCallback((v: string | number | undefined) => {
-    if (typeof v === 'string') {
-      setValue(parseInt(v))
-    } else if (typeof v === 'number') {
-      setValue(v);
-    } else {
-      setValue(0);
-    }
+  const onChange = useCallback((e) => {
+    setValue(parseInt(e.target.value));
   }, []);
 
   const formatter = useCallback((v: string | number | undefined) => {
@@ -37,23 +29,20 @@ export default function PaymentTestPage() {
 
   return (
     <>
-      <PageHeader title="카카오페이 테스트" onBack={history.goBack} />
-      <Space direction="vertical" style={{ margin: '8px' }}>
-        <InputNumber
+      <TopBar title="카카오페이 테스트" onBack={true} />
+      <div>
+        <input
           style={{ width: '100%' }}
           defaultValue={value}
-          formatter={formatter}
-          parser={parser}
           onChange={onChange}
         />
         <div
-          className="flex-center"
           style={{ backgroundColor: '#ffe812', height: '100px' }}
           onClick={onClick}
         >
           카카오페이 결제 테스트
+        </div>
       </div>
-      </Space>
     </>
   )
 }

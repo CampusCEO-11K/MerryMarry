@@ -1,5 +1,5 @@
 export { default as QrcodeDisplayPage } from './etc/qrcode-display';
-export { default as TabBarLayout } from './layouts/tab-bar-layout';
+export { default as MainLayout } from './layouts/main-layout';
 export { default as PhoneLayout } from './layouts/phone-layout';
 
 export { default as TicketPage } from './ticket/ticket-tab';

@@ -1,0 +1,25 @@
+.guestbook-workflow-5-success {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & .title {
+    width: 270px;
+    font-size: 25px;
+    margin-top: 70px;
+    margin-bottom: 70px;
+  }
+
+  & .btn {
+    display: block;
+    width: 312px;
+    margin-bottom: 15px;
+  }
+
+  & .subtitle {
+    margin-top: 66px;
+    color: #6545E3;
+  }
+}

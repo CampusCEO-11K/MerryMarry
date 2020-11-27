@@ -1,12 +1,14 @@
-import { PageHeader, Space } from 'antd';
 import React, { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
-import { GuestbookForm } from 'src/components';
+import { useDispatch, useSelector } from 'react-redux';
+import { GuestbookForm, MarriageCard, TopBar } from 'src/components';
 import { guestbookWorkflowGuestbook } from 'src/features/guestbook/workflow/3-guestbook';
-import { RootActions } from 'src/store';
+import { RootActions, RootState } from 'src/store';
+import MainLayout from '../layouts/main-layout';
+import './guestbook-workflow-2-guestbook.scss';
 
 export default function GuestbookWorflowGuestbookPage() {
   const dispatch = useDispatch();
+  const marriage = useSelector((state: RootState) => state.guestbookWorkflow.marriage);
 
   const onSubmit = useCallback((guestbook: { name: string, belong: string, msg: string }) => {
     dispatch(guestbookWorkflowGuestbook(guestbook))
@@ -17,13 +19,11 @@ export default function GuestbookWorflowGuestbookPage() {
   }, [dispatch]);
 
   return (
-    <>
-      <PageHeader title="방명록 남기기" onBack={onBack} />
-      <Space direction="vertical" style={{ margin: '8px' }}>
+    <MainLayout title="방명록 남기기" onBack={onBack}>
+      <div className="guestbook-workflow-2-guestbook">
+        {marriage && <MarriageCard marriage={marriage} />}
         <GuestbookForm onSubmit={onSubmit} />
-        <button type="button" className="btn btn-secondary" disabled>음성으로 남기기</button>
-        <button type="button" className="btn btn-secondary" disabled>영상으로 남기기</button>
-      </Space>
-    </>
+      </div>
+    </MainLayout>
   )
 }

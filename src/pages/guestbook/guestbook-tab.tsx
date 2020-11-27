@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { TabBarTab } from 'src/components/tab-bar';
 import { guestbook_phone, guestbook_qrcode } from 'src/utils/routes';
-import TabBarLayout from '../layouts/tab-bar-layout';
+import MainLayout from '../layouts/main-layout';
 import './guestbook-tab.scss';
 
 export default function GuestbookTabPage() {
   return (
-    <TabBarLayout>
+    <MainLayout title="방명록" currentTab={TabBarTab.guestbook}>
       <div className="guestbook-tab">
         <div className="layout-1">
           <Link className="button-1" to={guestbook_qrcode}>
@@ -25,6 +26,6 @@ export default function GuestbookTabPage() {
           </Link>
         </div>
       </div>
-    </TabBarLayout>
+    </MainLayout>
   )
 }

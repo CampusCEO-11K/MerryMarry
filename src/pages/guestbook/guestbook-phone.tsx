@@ -1,8 +1,8 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { TopBar } from 'src/components';
 import { findGuestbookByPhone } from 'src/features/guestbook/find-guestbook-or-create';
+import MainLayout from '../layouts/main-layout';
 import './guestbook-phone.scss';
 
 export default function GuestbookPhonePage() {
@@ -39,11 +39,8 @@ export default function GuestbookPhonePage() {
     }
   }, [dispatch, state]);
 
-  console.log(state);
-
   return (
-    <>
-      <TopBar title="방명록" />
+    <MainLayout title="방명록" onBack={true}>
       <div className="guestbook-phone">
         <form className="needs-validation" onSubmit={onSubmit} ref={form} noValidate>
           <div className="form-group">
@@ -69,6 +66,6 @@ export default function GuestbookPhonePage() {
           <button className="btn">다음</button>
         </form>
       </div>
-    </>
+    </MainLayout>
   )
 }

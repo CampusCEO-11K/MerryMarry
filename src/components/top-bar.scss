@@ -6,4 +6,12 @@
   align-items: center;
   font-size: 25px;
   background-color: white;
+  position: relative;
+
+  & > .back-btn {
+    position: absolute;
+    left: 0;
+    font-size: 36px;
+    margin-left: 12px;
+  }
 }

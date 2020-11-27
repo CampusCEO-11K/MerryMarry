@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from 'src/store';
+import { TabBarTab } from 'src/components/tab-bar';
 import { listTicketRequest } from 'src/features/ticket/list-ticket';
 import { Ticket } from 'src/models';
+import { RootState } from 'src/store';
 import { getNameFromMarriage } from 'src/utils';
-import TabBarLayout from '../layouts/tab-bar-layout';
+import MainLayout from '../layouts/main-layout';
 import './ticket-tab.scss';
 
 function MainTicket({ ticket }: { ticket: Ticket }) {
@@ -42,7 +43,7 @@ export default function TicketPage() {
   const mainTicket = tickets.filter(v => !v.isUsed)[0];
 
   return (
-    <TabBarLayout>
+    <MainLayout title="모바일 식권" currentTab={TabBarTab.ticket}>
       <div className="ticket-tab">
         <div className="main-ticket-container">
           {mainTicket && <MainTicket ticket={mainTicket} />}
@@ -53,6 +54,6 @@ export default function TicketPage() {
           <div className="used-ticket">사용 완료</div>
         </div>
       </div>
-    </TabBarLayout>
+    </MainLayout>
   )
 }

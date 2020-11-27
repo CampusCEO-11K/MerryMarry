@@ -1,11 +1,9 @@
-import { PageHeader, Space } from 'antd';
 import React, { useCallback, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { TopBar } from 'src/components';
 import { tossReadyRequest } from 'src/features/payment/toss';
 
 export default function PaymentTestPage() {
-  const history = useHistory();
   const dispatch = useDispatch();
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -16,15 +14,15 @@ export default function PaymentTestPage() {
 
   return (
     <>
-      <PageHeader title="토스페이먼츠 테스트" onBack={history.goBack} />
-      <Space direction="vertical" style={{ margin: '8px' }}>
+      <TopBar title="토스페이먼츠 테스트" onBack={true} />
+      <div>
         <input
           className="form-control"
           type="number"
           ref={inputRef}
         />
         <button type="button" className="btn btn-primary" onClick={onClick}>토스페이먼츠 결제 테스트</button>
-      </Space>
+      </div>
     </>
   )
 }

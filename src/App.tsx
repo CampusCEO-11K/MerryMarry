@@ -20,27 +20,25 @@ function App() {
   }, [dispatch, user]);
   
   const content = (
-    <div id="app-container">
-      <Switch>
-        <Route path="/qrcode-display" component={pages.QrcodeDisplayPage} />
+    <Switch>
+      <Route path="/qrcode-display" component={pages.QrcodeDisplayPage} />
 
-        <Route path="/toss/test" component={pages.TossTestPage} />
-        <Route path="/toss/ready-result" component={pages.TossReadyPage} />
+      <Route path="/toss/test" component={pages.TossTestPage} />
+      <Route path="/toss/ready-result" component={pages.TossReadyPage} />
 
-        <Route path={routes.guestbook_workflow_success} component={pages.GuestbookSuccessPage} />
-        <Route path={routes.guestbook_workflow()} component={pages.GuestbookWorkflowPage} />
-        <Route path={routes.guestbook_phone} component={pages.GuestbookPhonePage} />
-        <Route path={routes.guestbook_qrcode} component={pages.GuestbookQrcodePage} />
-        <Route path={routes.guestbook} component={pages.GuestbookTabPage} />
+      <Route path={routes.guestbook_workflow_success} component={pages.GuestbookSuccessPage} />
+      <Route path={routes.guestbook_workflow()} component={pages.GuestbookWorkflowPage} />
+      <Route path={routes.guestbook_phone} component={pages.GuestbookPhonePage} />
+      <Route path={routes.guestbook_qrcode} component={pages.GuestbookQrcodePage} />
+      <Route path={routes.guestbook} component={pages.GuestbookTabPage} />
 
-        <Route path={routes.ticket} component={pages.TicketPage} />
-        <Route path={routes.data} component={pages.DataPage} />
-        <Route path={routes.community} component={pages.CommunityPage} />
-        <Route path={routes.my} component={pages.MyPage} />
+      <Route path={routes.ticket} component={pages.TicketPage} />
+      <Route path={routes.data} component={pages.DataPage} />
+      <Route path={routes.community} component={pages.CommunityPage} />
+      <Route path={routes.my} component={pages.MyPage} />
 
-        <Route path="/"><Redirect to={routes.guestbook} /></Route>
-      </Switch>
-    </div>
+      <Route path="/"><Redirect to={routes.guestbook} /></Route>
+    </Switch>
   )
 
   if (width > 600) {

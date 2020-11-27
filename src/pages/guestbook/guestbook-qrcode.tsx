@@ -1,8 +1,8 @@
-import { PageHeader } from 'antd';
 import React, { useCallback, useState } from 'react';
 import QrReader from 'react-qr-reader';
 import { useHistory } from 'react-router-dom';
 import { guestbook_workflow } from 'src/utils/routes';
+import { MainLayout } from '..';
 
 export default function GuestbookQrcodePage() {
   const history = useHistory();
@@ -26,8 +26,7 @@ export default function GuestbookQrcodePage() {
   }, [history])
 
   return (
-    <>
-      <PageHeader title="QR코드 인식" onBack={history.goBack} />
+    <MainLayout title="QR코드 인식" onBack={true}>
       <QrReader
         delay={300}
         onError={onError}
@@ -36,6 +35,6 @@ export default function GuestbookQrcodePage() {
       />
       <p>{value}</p>
       <button type="button" className="btn btn-primary" onClick={onSkip}>Skip</button>
-    </>
+    </MainLayout>
   )
 }

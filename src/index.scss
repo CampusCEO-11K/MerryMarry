@@ -1,52 +1,16 @@
-body {
+html, body {
+  height: 100%;
+  width: 100%;
   margin: 0;
-  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-$DIVIER_COLOR: #dddddd;
-
-.border-top {
-  border-top: 1px solid $DIVIER_COLOR;
-}
-
-.border-bottom {
-  border-bottom: 1px solid $DIVIER_COLOR;
-}
-
-.ant-page-header {
-  border-bottom: 1px solid $DIVIER_COLOR;
+  font-family: 'Roboto';
 }
 
 #root {
-  height: 100%;
-  display: flex;
-  flex-flow: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.content-layout {
-  flex: 1 1 auto;
-}
-
-.flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#app-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
   width: 100%;
+  height: 100%;
+}
+
+.btn {
+  color: white;
+  background-color: #CBB5E6;
 }

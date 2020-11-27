@@ -1,6 +1,7 @@
 import React, { useCallback, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from 'src/store';
+import './guestbook-form.scss';
 
 interface Props {
   onSubmit: (guestbook: {name: string, belong: string, msg: string}) => void;
@@ -24,13 +25,13 @@ export default function GuestbookForm(props: Props) {
   }, [props]);
   
   return (
-    <form className="needs-validation" ref={form} onSubmit={onSubmit} noValidate>
+    <form className="needs-validation guestbook-form" ref={form} onSubmit={onSubmit} noValidate>
       <div className="form-group">
-        <label>이름</label>
         <input
           className="form-control"
           name="name"
           defaultValue={name ? undefined : workflow.name}
+          placeholder={name ? undefined : "이름"}
           required
           readOnly={!!name}
           value={name}
@@ -38,15 +39,23 @@ export default function GuestbookForm(props: Props) {
         <div className="invalid-feedback">본인의 이름을 입력해주세요!</div>
       </div>
       <div className="form-group">
-        <label>소속</label>
-        <input className="form-control" name="belong" defaultValue={workflow.belong} />
+        <input
+          className="form-control"
+          name="belong"
+          defaultValue={workflow.belong}
+          placeholder="소속"
+        />
       </div>
       <div className="form-group">
-        <label>메시지</label>
-        <textarea className="form-control" name="msg" defaultValue={workflow.msg} />
+        <textarea
+          className="form-control"
+          name="msg"
+          defaultValue={workflow.msg}
+          placeholder="메시지"
+        />
       </div>
-      <button type="submit" className="btn btn-primary">건너뛰기</button>
-      <button type="submit" className="btn btn-primary">다음</button>
+      <button type="submit" className="btn skip-btn">건너뛰기</button>
+      <button type="submit" className="btn next-btn">다음</button>
     </form>
   );
 };

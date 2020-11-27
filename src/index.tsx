@@ -11,7 +11,6 @@ import { rootSaga } from './features';
 import { rootReducer } from './store';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import 'antd/dist/antd.css';
 import './index.scss';
 
 export const customHistory = createBrowserHistory();

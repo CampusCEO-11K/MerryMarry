@@ -1,0 +1,31 @@
+.guestbook-form {
+  & input {
+    border-color: #E4D8D8;
+
+    &::placeholder {
+      color: #E4DCDC;
+      opacity: 1;
+    }
+  }
+
+  & textarea {
+    border-color: #E4D8D8;
+
+    &::placeholder {
+      color: #E4DCDC;
+      opacity: 1;
+    }
+  }
+
+  & .btn {
+    display: block;
+    width: 100%;
+    color: white;
+    background-color: #CBB5E6;
+  }
+
+  & .skip-btn {
+    margin-top: 14px;
+    margin-bottom: 14px;
+  }
+}

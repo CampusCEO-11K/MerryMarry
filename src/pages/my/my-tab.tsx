@@ -1,8 +1,9 @@
 import React from 'react';
-import TabBarLayout from '../layouts/tab-bar-layout';
+import { TabBarTab } from 'src/components/tab-bar';
+import MainLayout from '../layouts/main-layout';
 
 export default function MyPage() {
   return (
-    <TabBarLayout />
+    <MainLayout title="MY" currentTab={TabBarTab.my} />
   )
 }

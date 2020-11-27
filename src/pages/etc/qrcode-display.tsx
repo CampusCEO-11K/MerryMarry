@@ -1,9 +1,8 @@
 import React, { useCallback, useState } from 'react';
-import { PageHeader, Input } from 'antd';
 import QRCode from 'qrcode.react';
 import { useHistory } from 'react-router-dom';
+import { TopBar } from 'src/components';
 
-const { TextArea } = Input;
 
 export default function QrcodeDisplayPage() {
   const history = useHistory();
@@ -15,12 +14,11 @@ export default function QrcodeDisplayPage() {
 
   return (
     <div style={{ height: '100%' }}>
-      <PageHeader
-        onBack={history.goBack}
+      <TopBar
+        onBack={true}
         title="QrcodeDisplayPage"
       />
-      <TextArea
-        autoSize
+      <textarea
         defaultValue={value}
         onChange={onValueChange}
         style={{ marginTop: '8px' }}

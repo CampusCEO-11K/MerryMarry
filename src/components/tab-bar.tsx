@@ -4,16 +4,24 @@ import { Link } from 'react-router-dom';
 import * as routes from 'src/utils/routes';
 import './tab-bar.scss';
 
-export const Tab = {
-  guestbook: { en: 'guestbook', kr: '방명록', route: routes.guestbook },
-  ticket: { en: 'ticket', kr: '모바일 식권', route: routes.ticket },
-  data: { en: 'data', kr: '데이터 관리', route: routes.data },
-  community: { en: 'community', kr: '커뮤니티', route: routes.community },
-  my: { en: 'my', kr: 'MY', route: routes.my },
-} as const;
+export enum TabBarTab {
+  guestbook,
+  ticket,
+  data,
+  community,
+  my
+}
+
+const Tab = {
+  guestbook: { en: TabBarTab.guestbook, kr: '방명록', route: routes.guestbook },
+  ticket: { en: TabBarTab.ticket, kr: '모바일 식권', route: routes.ticket },
+  data: { en: TabBarTab.data, kr: '데이터 관리', route: routes.data },
+  community: { en: TabBarTab.community, kr: '커뮤니티', route: routes.community },
+  my: { en: TabBarTab.my, kr: 'MY', route: routes.my },
+};
 
 type Props = {
-  current: TabBar.Tab;
+  current: TabBarTab;
 }
 
 export function TabBar(props: Props) {
@@ -23,7 +31,7 @@ export function TabBar(props: Props) {
     <Link
       to={route}
       key={en}
-      className={classnames({ selected: current.toString() === en }, 'tab-bar-item')}
+      className={classnames({ selected: current === en }, 'tab-bar-item')}
     >
       <div className="tab-bar-icon"></div>
       <span className="tab-bar-title">{kr}</span>
@@ -35,8 +43,5 @@ export function TabBar(props: Props) {
       {tabs}
     </div>
   )
-}
 
-export declare namespace TabBar {
-  export type Tab = keyof typeof Tab;
 }

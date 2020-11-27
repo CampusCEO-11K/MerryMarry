@@ -1,4 +1,3 @@
-import { message } from "antd";
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 
 function axiosErrorToString(error: any): string {
@@ -19,7 +18,7 @@ axios.interceptors.response.use((response) => {
   return response;
 }, (error) => {
   const errMsg = axiosErrorToString(error);
-  message.error(errMsg);
+  alert(errMsg);
   return Promise.reject(errMsg);
 });
 
