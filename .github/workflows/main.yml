@@ -34,4 +34,4 @@ jobs:
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
         port: ${{ secrets.PORT }}
-        script: cd ~/nginx; rm -rf merrymarry; mkdir merrymarry; tar -xzvf build.tar.gz --strip-components=1 -C merrymarry; rm build.tar.gz
+        script: cd ~/nginx; rm -rf 21do; mkdir 21do; tar -xzvf build.tar.gz --strip-components=1 -C 21do; rm build.tar.gz

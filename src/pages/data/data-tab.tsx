@@ -29,11 +29,9 @@ export default function DataPage() {
     });
 
     return Array.from(map.entries()).map(([key, value]) => (
-      <DataEntry guestbooks={value} />
+      <DataEntry key={key} guestbooks={value} />
     ))
   }, [guestbooks])
-
-  console.log(dataEntries);
 
   return (
     <MainLayout title="데이터 정리" currentTab={TabBarTab.data}>
