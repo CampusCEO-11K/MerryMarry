@@ -1,7 +1,6 @@
-import React, { useCallback, useState } from 'react';
 import QRCode from 'qrcode.react';
-import { TopBar } from 'src/components';
-
+import React, { useCallback, useState } from 'react';
+import MainLayout from '../layouts/main-layout';
 
 export default function QrcodeDisplayPage() {
   const [value, setValue] = useState('https://www.naver.com');
@@ -11,19 +10,18 @@ export default function QrcodeDisplayPage() {
   }, []);
 
   return (
-    <div style={{ height: '100%' }}>
-      <TopBar
-        onBack={true}
-        title="QrcodeDisplayPage"
-      />
-      <textarea
-        defaultValue={value}
-        onChange={onValueChange}
-        style={{ marginTop: '8px' }}
-      />
-      <div style={{ margin: '8px' }}>
-        <QRCode value={value} />
+    <MainLayout title="QrcodeDisplayPage" onBack={true}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "stretch", justifyContent: "cetner "}}>
+        <textarea
+          defaultValue={value}
+          onChange={onValueChange}
+          style={{ marginTop: '8px' }}
+        />
+        <div style={{ margin: '8px' }}>
+          <QRCode value={value} />
+        </div>
       </div>
-    </div>
+
+    </MainLayout>
   )
 }

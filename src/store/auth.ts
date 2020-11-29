@@ -6,7 +6,14 @@ interface State {
 }
 
 const initialState: State = {
-  user: undefined,
+  user: {
+    userId: 1,
+    username: "username",
+    name: "홍길동",
+    phone: "01012345678",
+    addDate: "2020-11-27T09:41:07.000Z",
+    regDate: "2020-11-27T09:41:23.000Z"
+  },
 }
 
 export default createSlice({
