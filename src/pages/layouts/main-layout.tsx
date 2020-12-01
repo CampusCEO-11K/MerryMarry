@@ -9,9 +9,11 @@ interface Props extends React.ComponentProps<typeof TopBar> {
 }
 
 export default function MainLayout(props: Props) {
+  const { children, currentTab, ...topBarProps } = props;
+
   return (
     <div className="main-layout">
-      <TopBar title={props.title} onBack={props.onBack} />
+      <TopBar {...topBarProps} />
       <div className="content-layout">
         {props.children}
       </div>

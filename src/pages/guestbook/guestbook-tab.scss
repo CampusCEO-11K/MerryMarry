@@ -20,15 +20,17 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      padding-top: 20px;
       border-radius: 20px;
       box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
 
       & > .icon-1 {
         width: 80px;
         height: 80px;
-        background-color: gray;
         margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       & > .title-1 {
@@ -62,8 +64,10 @@
       & > .icon-2 {
         width: 30px;
         height: 30px;
-        background-color: gray;
         margin-right: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       & > .title-2 {

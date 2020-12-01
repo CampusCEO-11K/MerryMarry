@@ -1,12 +1,13 @@
 import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { DataEntry } from 'src/components';
+import { DataEntry, RatioDiv } from 'src/components';
 import { TabBarTab } from 'src/components/tab-bar';
 import { listGuestbookRequest } from 'src/features/guestbook/list-guestbook';
 import { GuestbookForUser } from 'src/models';
 import { RootState } from 'src/store';
 import { dateToString } from 'src/utils';
 import MainLayout from '../layouts/main-layout';
+import { data, search, list } from 'src/svgs';
 import './data-tab.scss';
 
 export default function DataPage() {
@@ -33,8 +34,27 @@ export default function DataPage() {
     ))
   }, [guestbooks])
 
+  const leftBtns = useMemo(() => (
+    <>
+      <RatioDiv style={{ marginLeft: '12%' }} widthRatio={0.8}>
+        <img src={data} />
+      </RatioDiv>
+      <RatioDiv widthRatio={0.8}>
+        <img src={search} />
+      </RatioDiv>
+    </>
+  ), []);
+
+  const rightBtns = useMemo(() => (
+    <>
+      <RatioDiv>
+        <img src={list} />
+      </RatioDiv>
+    </>
+  ), []);
+
   return (
-    <MainLayout title="데이터 정리" currentTab={TabBarTab.data}>
+    <MainLayout title="데이터 관리" currentTab={TabBarTab.data} leftBtns={leftBtns} rightBtns={rightBtns}>
       <div className="data-tab">
         {dataEntries}
       </div>
