@@ -33,7 +33,10 @@ function App() {
       <Route path={routes.guestbook} component={pages.GuestbookTabPage} />
 
       <Route path={routes.ticket} component={pages.TicketPage} />
+
+      <Route path={routes.data_detail} component={pages.DataDetailPage} />
       <Route path={routes.data} component={pages.DataPage} />
+
       <Route path={routes.community} component={pages.CommunityPage} />
       <Route path={routes.my} component={pages.MyPage} />
 
