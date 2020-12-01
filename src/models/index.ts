@@ -16,6 +16,7 @@ export interface Marriage {
   location?: string;
   account?: string;
   bank?: string;
+  date?: string;
 }
 
 export interface Transaction {

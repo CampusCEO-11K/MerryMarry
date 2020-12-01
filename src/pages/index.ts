@@ -5,6 +5,7 @@ export { default as PhoneLayout } from './layouts/phone-layout';
 export { default as TicketPage } from './ticket/ticket-tab';
 export { default as DataPage } from './data/data-tab';
 export { default as DataDetailPage } from './data/data-detail';
+export { default as DataCalendarPage } from './data/data-calendar';
 export { default as CommunityPage } from './community/community-tab';
 export { default as MyPage } from './my/my-tab';
 

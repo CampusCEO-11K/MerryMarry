@@ -1,0 +1,53 @@
+.data-calendar-page {
+  padding: 33px;
+
+  .bar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      flex: 1 1 0;
+      font-size: 20px;
+      color: #BBBBBB;
+      text-align: center;
+    }
+
+    i {
+      flex: 0 0 0;
+      font-size: 36px;
+    }
+  }
+
+  table {
+    margin-top: 30px;
+    width: 100%;
+    table-layout: fixed;
+
+    td {
+      text-align: center;
+      height: 90px;
+      vertical-align: top;
+
+      div {
+        color: black;
+        display: flex;
+        flex-direction: column;
+
+        span:first-child {
+          margin-bottom: 10px;
+        }
+
+        span:not(:first-child) {
+          font-size: 12px;
+        }
+      }
+    }
+
+    td.red div span:first-child{
+      color: #CA1314;
+    }
+  }
+}

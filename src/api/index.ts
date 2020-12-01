@@ -3,6 +3,7 @@ export { authLoginApi } from './auth/login';
 export { authRegisterApi } from './auth/register';
 
 export { getMarriageApi } from './marriage/get-marriage';
+export { listMarriageApi } from './marriage/list-marriage';
 export { findMarriageOrcreateApi } from './marriage/find-marriage-or-create';
 
 export { workflowGuestbookApi } from './guestbook/workflow';

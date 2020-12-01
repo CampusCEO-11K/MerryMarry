@@ -22,3 +22,4 @@ export const guestbook_phone = "/guestbook/find-by-phone";
 export const guestbook = "/guestbook";
 
 export const data_detail = `${data}/detail`;
+export const data_calendar = `${data}/calendar`;
