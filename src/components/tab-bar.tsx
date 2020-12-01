@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import * as routes from 'src/utils/routes';
 import './tab-bar.scss';
+import * as svgs from 'src/svgs';
 
 export enum TabBarTab {
   guestbook,
@@ -12,13 +13,43 @@ export enum TabBarTab {
   my
 }
 
-const Tab = {
-  guestbook: { en: TabBarTab.guestbook, kr: '방명록', route: routes.guestbook },
-  ticket: { en: TabBarTab.ticket, kr: '모바일 식권', route: routes.ticket },
-  data: { en: TabBarTab.data, kr: '데이터 관리', route: routes.data },
-  community: { en: TabBarTab.community, kr: '커뮤니티', route: routes.community },
-  my: { en: TabBarTab.my, kr: 'MY', route: routes.my },
-};
+const Tabs = [
+  {
+    en: TabBarTab.guestbook,
+    route: routes.guestbook,
+    on: svgs.penOn,
+    off: svgs.penOff,
+    kr: '방명록',
+  },
+  {
+    en: TabBarTab.ticket,
+    route: routes.ticket,
+    on: svgs.ticketOn,
+    off: svgs.ticketOff,
+    kr: '모바일 식권',
+  },
+  {
+    en: TabBarTab.data,
+    route: routes.data,
+    on: svgs.notesOn,
+    off: svgs.notesOff,
+    kr: '데이터 관리',
+  },
+  {
+    en: TabBarTab.community,
+    route: routes.community,
+    on: svgs.friendsOn,
+    off: svgs.friendsOff,
+    kr: '커뮤니티',
+  },
+  {
+    en: TabBarTab.my,
+    route: routes.my,
+    on: svgs.profileOn,
+    off: svgs.profileOff,
+    kr: 'MY',
+  },
+];
 
 type Props = {
   current: TabBarTab;
@@ -27,13 +58,15 @@ type Props = {
 export function TabBar(props: Props) {
   const { current } = props;
 
-  const tabs = Object.values(Tab).map(({ en, kr, route }) => (
+  const tabs = Tabs.map(({ en, kr, route, on, off }) => (
     <Link
       to={route}
       key={en}
       className={classnames({ selected: current === en }, 'tab-bar-item')}
     >
-      <div className="tab-bar-icon"></div>
+      <div className="tab-bar-icon">
+        <img src={(current === en) ? on : off} />
+      </div>
       <span className="tab-bar-title">{kr}</span>
     </Link>
   ));
