@@ -7,7 +7,7 @@ import { GuestbookForUser } from 'src/models';
 import { RootState } from 'src/store';
 import { dateToString } from 'src/utils';
 import MainLayout from '../layouts/main-layout';
-import { data, search, list } from 'src/svgs';
+import { data, search, list, calendar } from 'src/svgs';
 import './data-tab.scss';
 import { Link } from 'react-router-dom';
 import * as routes from 'src/utils/routes';
@@ -50,7 +50,7 @@ export default function DataPage() {
   const rightBtns = useMemo(() => (
     <>
       <RatioDiv>
-        <Link to={routes.data_calendar}><img src={list} /></Link>
+        <Link to={routes.data_calendar}><img src={calendar} /></Link>
       </RatioDiv>
     </>
   ), []);

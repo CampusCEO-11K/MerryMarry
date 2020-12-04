@@ -20,6 +20,7 @@ export const guestbook_workflow_success = "/guestbook/workflow/success";
 export const guestbook_qrcode = `/guestbook/find-by-qrcode`;
 export const guestbook_phone = "/guestbook/find-by-phone";
 export const guestbook = "/guestbook";
+export const guestbook_comment = "/guestbook/comment";
 
 export const data_detail = `${data}/detail`;
 export const data_calendar = `${data}/calendar`;

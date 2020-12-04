@@ -30,6 +30,7 @@ function App() {
       <Route path={routes.guestbook_workflow()} component={pages.GuestbookWorkflowPage} />
       <Route path={routes.guestbook_phone} component={pages.GuestbookPhonePage} />
       <Route path={routes.guestbook_qrcode} component={pages.GuestbookQrcodePage} />
+      <Route path={routes.guestbook_comment} component={pages.GuestbookCommentPage} />
       <Route path={routes.guestbook} component={pages.GuestbookTabPage} />
 
       <Route path={routes.ticket} component={pages.TicketPage} />

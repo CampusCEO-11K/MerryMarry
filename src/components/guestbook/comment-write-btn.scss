@@ -1,0 +1,19 @@
+.comment-write-btn {
+  background-image: url("../../svgs/circle.svg");
+  width: 45px;
+  height: 45px;
+
+  img {
+    display: block;
+    width: 22.5px;
+    height: 22.5px;
+    margin: 6px auto 0 auto;
+  }
+
+  span {
+    display: block;
+    font-size: 4px;
+    color: #cbb5e6;
+    text-align: center;
+  }
+}

@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { guestbookWorkflowEntry } from 'src/features/guestbook/workflow/2-entry';
 import { RootState } from 'src/store';
+import { congrate } from 'src/svgs';
 import { getNameFromMarriage } from 'src/utils';
 import MainLayout from '../layouts/main-layout';
 import './guestbook-workflow-1-entry.scss';
@@ -30,7 +31,7 @@ export default function GuestbookWorkflowEntryPage() {
     <MainLayout title="방명록" onBack={true}>
       <div className="guestbook-workflow-1-entry">
         <div className="layout-1">
-          <div className="icon"></div>
+          <img src={congrate} className="icon" />
           <div className="title">
             {msg}
           </div>

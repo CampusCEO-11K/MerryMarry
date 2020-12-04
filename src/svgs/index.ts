@@ -23,6 +23,9 @@ import invite from './invite.png';
 import noti from './noti.png';
 import point from './point.png';
 import review from './review.png';
+import calendar from './calendar.svg';
+import congrate from './congrate.svg';
+import vows from './vows.svg';
 
 export {
   friendsOff,
@@ -50,4 +53,7 @@ export {
   noti,
   point,
   review,
+  calendar,
+  congrate,
+  vows,
 }

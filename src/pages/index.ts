@@ -14,6 +14,7 @@ export { default as GuestbookWorkflowPage } from './guestbook/guestbook-workflow
 export { default as GuestbookSuccessPage } from './guestbook/guestbook-workflow-5-success';
 export { default as GuestbookQrcodePage } from './guestbook/guestbook-qrcode';
 export { default as GuestbookPhonePage } from './guestbook/guestbook-phone';
+export { default as GuestbookCommentPage } from './guestbook/guestbook-comment';
 
 export { default as TossTestPage } from './etc/toss-test';
 export { default as TossReadyPage } from './etc/toss-ready-result';

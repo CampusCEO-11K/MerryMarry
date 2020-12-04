@@ -8,3 +8,4 @@ export { default as GuestbookForm } from './guestbook-form';
 export { default as DataEntry } from './data-entry';
 export { default as DataCell } from './data-cell';
 export { default as RatioDiv } from './ratio-div';
+export { default as MarriageEntry } from './guestbook/marriage-entry';
