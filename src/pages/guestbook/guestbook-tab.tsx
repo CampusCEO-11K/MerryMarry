@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { TabBarTab } from 'src/components/tab-bar';
-import { guestbook_phone, guestbook_qrcode } from 'src/utils/routes';
+import { guestbook_comment, guestbook_phone, guestbook_qrcode } from 'src/utils/routes';
 import MainLayout from '../layouts/main-layout';
 import { qrcode, sendMessage, congratMessage } from 'src/svgs';
 import './guestbook-tab.scss';
@@ -25,7 +25,7 @@ export default function GuestbookTabPage() {
           </Link>
         </div>
         <div className="layout-2">
-          <Link className="button-2" to="/">
+          <Link className="button-2" to={guestbook_comment}>
             <div className="icon-2">
               <img src={congratMessage}/>
             </div>

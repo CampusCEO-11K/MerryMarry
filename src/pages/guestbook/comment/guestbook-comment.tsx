@@ -6,10 +6,10 @@ import { listMarriageRequest } from 'src/features/marriage/list-marriage';
 import { Marriage } from 'src/models';
 import { RootState } from 'src/store';
 import { dateToString } from 'src/utils';
-import MainLayout from '../layouts/main-layout';
+import MainLayout from '../../layouts/main-layout';
 import './guestbook-comment.scss';
 
-export default function GuestbookTabPage() {
+export default function GuestbookCommentPage() {
   const dispatch = useDispatch();
   const marriages = useSelector((state: RootState) => state.marriages);
   const name: string | undefined = useSelector((state: RootState) => state.auth.user?.name);
@@ -40,8 +40,8 @@ export default function GuestbookTabPage() {
     <MainLayout title="방명록 남기기" onBack={true} currentTab={TabBarTab.guestbook}>
       <div id="guestbook-comment">
         <div id="msg1">{name}님의 일정 속 결혼식입니다.<br />축하 메시지를 작성해보세요!</div>
+        {marriageEntries}
       </div>
-      {marriageEntries}
     </MainLayout>
   )
 }
