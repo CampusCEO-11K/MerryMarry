@@ -14,6 +14,15 @@ import sendMessage from './send-message.svg';
 import data from './data.svg';
 import list from './list.svg';
 import search from './search.svg';
+import clear from './clear.png';
+import setting from './setting.png';
+import profile from './profile.png';
+import card from './card.png';
+import cs from './cs.png';
+import invite from './invite.png';
+import noti from './noti.png';
+import point from './point.png';
+import review from './review.png';
 
 export {
   friendsOff,
@@ -32,4 +41,13 @@ export {
   data,
   list,
   search,
+  clear,
+  setting,
+  profile,
+  card,
+  cs,
+  invite,
+  noti,
+  point,
+  review,
 }
