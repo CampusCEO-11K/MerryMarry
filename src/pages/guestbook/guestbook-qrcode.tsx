@@ -34,7 +34,7 @@ export default function GuestbookQrcodePage() {
         style={{ width: '100%' }}
       />
       <p>{value}</p>
-      <button type="button" className="btn btn-primary" onClick={onSkip}>Skip</button>
+      <button type="button" className="btn" onClick={onSkip}>Skip</button>
     </MainLayout>
   )
 }
