@@ -18,7 +18,7 @@ export default function GuestbookCommentWritePage() {
       marriageId,
       msg: textareaRef.current?.value || '',
     }))
-  }, [marriageId, textareaRef]);
+  }, [marriageId, textareaRef, dispatch]);
 
   const onVoice = useCallback(() => {
     alert('준비중입니다.')

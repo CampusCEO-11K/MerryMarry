@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { useHistory, useRouteMatch } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { TabBarTab } from 'src/components/tab-bar';
 import { congrate } from 'src/svgs';
 import { guestbook_comment } from 'src/utils/routes';

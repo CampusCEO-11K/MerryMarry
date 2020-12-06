@@ -1,5 +1,5 @@
-import React, { useMemo } from 'react'
-import { GuestbookForUser, Marriage } from 'src/models'
+import React, { useMemo } from 'react';
+import { Marriage } from 'src/models';
 import { dateToString } from 'src/utils';
 import MarriageCell from './marriage-cell';
 import './marriage-entry.scss';

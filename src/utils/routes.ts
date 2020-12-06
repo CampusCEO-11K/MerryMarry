@@ -4,6 +4,7 @@ export const ticket = "/ticket";
 export const data = "/data-manage";
 export const community = "/community";
 export const my = "/my";
+export const my_point = "/my/point";
 
 // guestbook
 export interface GuestbookWorkflowQuery {

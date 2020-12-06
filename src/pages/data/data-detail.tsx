@@ -42,7 +42,7 @@ export default function DataDetailPage() {
             </tr>
           </tbody>
         </table>
-        <button className="btn login-btn">수정하기</button>
+        <button className="btn login-btn" onClick={() => alert('준비중입니다.')}>수정하기</button>
       </div>
     </MainLayout>
   )

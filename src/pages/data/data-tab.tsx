@@ -1,16 +1,16 @@
 import React, { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { DataEntry, RatioDiv } from 'src/components';
 import { TabBarTab } from 'src/components/tab-bar';
 import { listGuestbookRequest } from 'src/features/guestbook/list-guestbook';
 import { GuestbookForUser } from 'src/models';
 import { RootState } from 'src/store';
+import { calendar, data, search } from 'src/svgs';
 import { dateToString } from 'src/utils';
-import MainLayout from '../layouts/main-layout';
-import { data, search, list, calendar } from 'src/svgs';
-import './data-tab.scss';
-import { Link } from 'react-router-dom';
 import * as routes from 'src/utils/routes';
+import MainLayout from '../layouts/main-layout';
+import './data-tab.scss';
 
 export default function DataPage() {
   const dispatch = useDispatch();
@@ -38,10 +38,10 @@ export default function DataPage() {
 
   const leftBtns = useMemo(() => (
     <>
-      <RatioDiv style={{ marginLeft: '12%' }} widthRatio={0.8}>
+      <RatioDiv style={{ marginLeft: '12%' }} widthRatio={0.8} onClick={() => alert('준비중입니다.')}>
         <img src={data} />
       </RatioDiv>
-      <RatioDiv widthRatio={0.8}>
+      <RatioDiv widthRatio={0.8} onClick={() => alert('준비중입니다.')}>
         <img src={search} />
       </RatioDiv>
     </>

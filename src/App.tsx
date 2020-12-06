@@ -43,6 +43,7 @@ function App() {
       <Route path={routes.data} component={pages.DataPage} />
 
       <Route path={routes.community} component={pages.CommunityPage} />
+      <Route path={routes.my_point} component={pages.MyPointPage} />
       <Route path={routes.my} component={pages.MyPage} />
 
       <Route path="/"><Redirect to={routes.guestbook} /></Route>

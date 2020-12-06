@@ -95,10 +95,10 @@ export default function DataCalendarPage() {
 
   const leftBtns = useMemo(() => (
     <>
-      <RatioDiv style={{ marginLeft: '12%' }} widthRatio={0.8}>
+      <RatioDiv style={{ marginLeft: '12%' }} widthRatio={0.8} onClick={() => alert('준비중입니다.')}>
         <img src={data} />
       </RatioDiv>
-      <RatioDiv widthRatio={0.8}>
+      <RatioDiv widthRatio={0.8} onClick={() => alert('준비중입니다.')}>
         <img src={search} />
       </RatioDiv>
     </>
