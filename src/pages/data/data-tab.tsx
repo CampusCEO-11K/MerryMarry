@@ -38,8 +38,10 @@ export default function DataPage() {
 
   const leftBtns = useMemo(() => (
     <>
-      <RatioDiv style={{ marginLeft: '12%' }} widthRatio={0.8} onClick={() => alert('준비중입니다.')}>
-        <img src={data} />
+      <RatioDiv style={{ marginLeft: '12%' }} widthRatio={0.8}>
+        <Link to={routes.data_statistics}>
+          <img src={data} />
+        </Link>
       </RatioDiv>
       <RatioDiv widthRatio={0.8} onClick={() => alert('준비중입니다.')}>
         <img src={search} />

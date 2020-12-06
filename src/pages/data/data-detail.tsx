@@ -1,8 +1,16 @@
-import React from 'react'
+import React, { useCallback } from 'react'
+import { useHistory } from 'react-router-dom';
+import { data_marriage } from 'src/utils/routes';
 import MainLayout from '../layouts/main-layout';
 import './data-detail.scss';
 
 export default function DataDetailPage() {
+  const history = useHistory();
+
+  const onClick = useCallback(() => {
+    history.push(data_marriage);
+  }, [history])
+
   return (
     <MainLayout title="상세정보" onBack={true}>
       <div className="data-detail-page">
@@ -31,7 +39,7 @@ export default function DataDetailPage() {
             <tr>
               <td>예식장</td>
               <td>
-                <div className="place">
+                <div className="place" onClick={onClick}>
                   <p>그랜드예식장</p>
                   <img src="https://cphoto.asiae.co.kr/listimglink/1/2013021816571922691_1.jpg" />
                 </div>

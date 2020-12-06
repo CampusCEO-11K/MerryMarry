@@ -40,6 +40,8 @@ function App() {
 
       <Route path={routes.data_detail} component={pages.DataDetailPage} />
       <Route path={routes.data_calendar} component={pages.DataCalendarPage} />
+      <Route path={routes.data_statistics} component={pages.DataStatisticsPage} />
+      <Route path={routes.data_marriage} component={pages.DataMarriagePage} />
       <Route path={routes.data} component={pages.DataPage} />
 
       <Route path={routes.community} component={pages.CommunityPage} />

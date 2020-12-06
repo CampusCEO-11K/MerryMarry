@@ -26,6 +26,8 @@ import review from './review.png';
 import calendar from './calendar.svg';
 import congrate from './congrate.svg';
 import vows from './vows.svg';
+import image1 from './image1.png';
+import image2 from './image2.png';
 
 export {
   friendsOff,
@@ -56,4 +58,6 @@ export {
   calendar,
   congrate,
   vows,
+  image1,
+  image2,
 }
