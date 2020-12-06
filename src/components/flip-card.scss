@@ -1,0 +1,91 @@
+.main-ticket {
+  width: 247px;
+  height: 390px;
+  background-color: white;
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+
+  .ticket-id {
+    margin-left: 20px;
+    margin-top: 20px;
+    font-size: 18px;
+  }
+
+  .marriage-name {
+    width: 166px;
+    height: 47px;
+    margin-top: 40px;
+    line-height: 47px;
+    align-self: center;
+    text-align: center;
+    background: rgba(203, 181, 230, 0.86);
+    border-radius: 20px;
+    font-size: 18px;
+  }
+
+  .description {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 15px;
+    line-height: 30px;
+  }
+
+  .date-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    align-items: center;
+    margin-top: auto;
+    padding: 0 20px 40px 20px;
+    text-align: center;
+    font-size: 16px;
+
+    & > .issue-date {
+      flex: 1 1 0;
+    }
+
+    & > .expire-date {
+      flex: 1 1 0;
+    }
+  }
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 247px;
+  height: 390px;
+  perspective: 1000px;
+
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+
+    .flip-card-front {
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden; /* Safari */
+      backface-visibility: hidden;
+    }
+  }
+
+  &.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+}

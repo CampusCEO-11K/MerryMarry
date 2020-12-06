@@ -28,6 +28,7 @@ import congrate from './congrate.svg';
 import vows from './vows.svg';
 import image1 from './image1.png';
 import image2 from './image2.png';
+import ticket from './ticket.png';
 
 export {
   friendsOff,
@@ -60,4 +61,5 @@ export {
   vows,
   image1,
   image2,
+  ticket,
 }

@@ -9,3 +9,4 @@ export { default as DataEntry } from './data-entry';
 export { default as DataCell } from './data-cell';
 export { default as RatioDiv } from './ratio-div';
 export { default as MarriageEntry } from './guestbook/marriage-entry';
+export { default as FlipCard } from './flip-card';
